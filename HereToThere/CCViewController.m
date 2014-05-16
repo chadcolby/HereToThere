@@ -7,9 +7,12 @@
 //
 
 #import "CCViewController.h"
-#import "CCRoundedMapButton.h"
+#import "CCButtonsView.h"
 
 @interface CCViewController ()
+
+@property (strong, nonatomic) CCButtonsView *mapButtonsView;
+@property (strong, nonatomic) CCButtonsView *drawableButtonsView;
 
 @end
 
@@ -17,10 +20,23 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    CCRoundedMapButton *settingsButton = [[CCRoundedMapButton alloc] initWithOrigin:CGPointMake(self.view.bounds.origin.x + 20, self.view.bounds.size.height - 70) Name:@"Settings"];
-    [settingsButton addTarget:self action:@selector(settingsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:settingsButton];
+    self.mapButtonsView = [[CCButtonsView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, self.view.bounds.size.height - 80,
+                                                                self.view.bounds.size.width, self.view.bounds.size.height)
+                                                                 andName:@"mapButtonsView" andTagID:0];
+    self.drawableButtonsView = [[CCButtonsView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, self.view.bounds.size.height - 80,
+                                                                                                                        self.view.bounds.size.width, self.view.bounds.size.height)
+                                                                                                     andName:@"drawableView" andTagID:1];
+
+    self.drawableButtonsView.hidden = YES;
+    [self.view addSubview:self.mapButtonsView];
+    [self.view addSubview:self.drawableButtonsView];
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressed:)];
+    longPress.minimumPressDuration = 0.75;
+    longPress.numberOfTouchesRequired = 1;
+    longPress.allowableMovement = 15.0;
+    [self.view addGestureRecognizer:longPress];
+    
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -29,9 +45,19 @@
     
 }
 
-- (void)settingsButtonPressed:(CCRoundedMapButton *)sender
+- (void)longPressed:(UILongPressGestureRecognizer *)sender
 {
-    NSLog(@"settings");
+    NSLog(@"press");
+    if (self.drawableButtonsView.hidden) {
+        self.drawableButtonsView.hidden = NO;
+        self.mapButtonsView.hidden = YES;
+    } else {
+        self.mapButtonsView.hidden = NO;
+        self.drawableButtonsView.hidden = YES;
+    }
+
+
+    
 }
 
 @end

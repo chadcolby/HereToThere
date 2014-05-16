@@ -12,6 +12,6 @@
 
 @property (strong, nonatomic) NSString *name;
 
-- (id)initWithOrigin:(CGPoint)buttonOrigin Name:(NSString *)buttonName;
+- (id)initWithOrigin:(CGPoint)buttonOrigin Name:(NSString *)buttonName andImageNamed:(NSString *)imageName;
 
 @end

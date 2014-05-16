@@ -22,6 +22,13 @@
 		8D5DD101192591CA002A7E68 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D5DD0FF192591CA002A7E68 /* InfoPlist.strings */; };
 		8D5DD103192591CA002A7E68 /* HereToThereTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5DD102192591CA002A7E68 /* HereToThereTests.m */; };
 		8D9491A41926572500A24DEB /* CCRoundedMapButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9491A31926572500A24DEB /* CCRoundedMapButton.m */; };
+		8D9491A619265F2400A24DEB /* Cog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D9491A519265F2400A24DEB /* Cog@2x.png */; };
+		8D9491A819265F3000A24DEB /* Cog.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D9491A719265F3000A24DEB /* Cog.png */; };
+		8D9491AC1926B99D00A24DEB /* CCButtonsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9491AB1926B99D00A24DEB /* CCButtonsView.m */; };
+		8D9491AE1926C32300A24DEB /* Location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D9491AD1926C32300A24DEB /* Location@2x.png */; };
+		8D9491B01926C33900A24DEB /* Location.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D9491AF1926C33900A24DEB /* Location.png */; };
+		8D9491B21926C93D00A24DEB /* Checkbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D9491B11926C93D00A24DEB /* Checkbox@2x.png */; };
+		8D9491B41926C94900A24DEB /* Checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D9491B31926C94900A24DEB /* Checkbox.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +63,14 @@
 		8D5DD102192591CA002A7E68 /* HereToThereTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HereToThereTests.m; sourceTree = "<group>"; };
 		8D9491A21926572500A24DEB /* CCRoundedMapButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCRoundedMapButton.h; sourceTree = "<group>"; };
 		8D9491A31926572500A24DEB /* CCRoundedMapButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCRoundedMapButton.m; sourceTree = "<group>"; };
+		8D9491A519265F2400A24DEB /* Cog@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cog@2x.png"; sourceTree = "<group>"; };
+		8D9491A719265F3000A24DEB /* Cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cog.png; sourceTree = "<group>"; };
+		8D9491AA1926B99D00A24DEB /* CCButtonsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCButtonsView.h; sourceTree = "<group>"; };
+		8D9491AB1926B99D00A24DEB /* CCButtonsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCButtonsView.m; sourceTree = "<group>"; };
+		8D9491AD1926C32300A24DEB /* Location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Location@2x.png"; sourceTree = "<group>"; };
+		8D9491AF1926C33900A24DEB /* Location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Location.png; sourceTree = "<group>"; };
+		8D9491B11926C93D00A24DEB /* Checkbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checkbox@2x.png"; sourceTree = "<group>"; };
+		8D9491B31926C94900A24DEB /* Checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Checkbox.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +137,8 @@
 				8D5DD0E9192591CA002A7E68 /* Main.storyboard */,
 				8D5DD0EC192591CA002A7E68 /* CCViewController.h */,
 				8D5DD0ED192591CA002A7E68 /* CCViewController.m */,
+				8D9491AA1926B99D00A24DEB /* CCButtonsView.h */,
+				8D9491AB1926B99D00A24DEB /* CCButtonsView.m */,
 				8D5DD0EF192591CA002A7E68 /* Images.xcassets */,
 				8D5DD0DE192591CA002A7E68 /* Supporting Files */,
 			);
@@ -131,6 +148,7 @@
 		8D5DD0DE192591CA002A7E68 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8D9491A919265F3800A24DEB /* Button Images */,
 				8D5DD0DF192591CA002A7E68 /* HereToThere-Info.plist */,
 				8D5DD0E0192591CA002A7E68 /* InfoPlist.strings */,
 				8D5DD0E3192591CA002A7E68 /* main.m */,
@@ -155,6 +173,19 @@
 				8D5DD0FF192591CA002A7E68 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8D9491A919265F3800A24DEB /* Button Images */ = {
+			isa = PBXGroup;
+			children = (
+				8D9491B31926C94900A24DEB /* Checkbox.png */,
+				8D9491B11926C93D00A24DEB /* Checkbox@2x.png */,
+				8D9491AF1926C33900A24DEB /* Location.png */,
+				8D9491AD1926C32300A24DEB /* Location@2x.png */,
+				8D9491A719265F3000A24DEB /* Cog.png */,
+				8D9491A519265F2400A24DEB /* Cog@2x.png */,
+			);
+			name = "Button Images";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,8 +265,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D9491A619265F2400A24DEB /* Cog@2x.png in Resources */,
 				8D5DD0F0192591CA002A7E68 /* Images.xcassets in Resources */,
 				8D5DD0E2192591CA002A7E68 /* InfoPlist.strings in Resources */,
+				8D9491B21926C93D00A24DEB /* Checkbox@2x.png in Resources */,
+				8D9491AE1926C32300A24DEB /* Location@2x.png in Resources */,
+				8D9491B41926C94900A24DEB /* Checkbox.png in Resources */,
+				8D9491A819265F3000A24DEB /* Cog.png in Resources */,
+				8D9491B01926C33900A24DEB /* Location.png in Resources */,
 				8D5DD0EB192591CA002A7E68 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,6 +295,7 @@
 				8D9491A41926572500A24DEB /* CCRoundedMapButton.m in Sources */,
 				8D5DD0E8192591CA002A7E68 /* CCAppDelegate.m in Sources */,
 				8D5DD0E4192591CA002A7E68 /* main.m in Sources */,
+				8D9491AC1926B99D00A24DEB /* CCButtonsView.m in Sources */,
 				8D5DD0EE192591CA002A7E68 /* CCViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
