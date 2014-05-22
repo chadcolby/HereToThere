@@ -23,12 +23,12 @@
 
 - (void)buttonsSetUp
 {
-    self.settingsButton = [[CCRoundedButton alloc]initWithOrigin:CGPointMake((self.bounds.size.width / 2) - 60,
+    self.settingsButton = [[CCRoundedButton alloc]initWithOrigin:CGPointMake((self.bounds.size.width / 2) + 10,
                                                                              self.bounds.origin.y + 20)];
     [self.settingsButton setImage:[UIImage imageNamed:@"settings"] forState:UIControlStateNormal];
     [self addSubview:self.settingsButton];
     
-    self.currentLocationButton = [[CCRoundedButton alloc]initWithOrigin:CGPointMake((self.bounds.size.width / 2) + 10,
+    self.currentLocationButton = [[CCRoundedButton alloc]initWithOrigin:CGPointMake((self.bounds.size.width / 2) - 60,
                                                                              self.bounds.origin.y + 20)];
     [self.currentLocationButton setImage:[UIImage imageNamed:@"currentLocation"] forState:UIControlStateNormal];
     [self addSubview:self.currentLocationButton];

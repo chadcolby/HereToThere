@@ -8,6 +8,7 @@
 
 #import "CCMapViewController.h"
 #import "CCViewForButtons.h"
+#import "CCDrawableView.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
@@ -16,6 +17,7 @@
 @property (strong, nonatomic) MKMapView *mapView;
 @property (strong, nonatomic) CCViewForButtons *buttonsView;
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CCDrawableView *drawingView;
 
 @end
 
@@ -33,8 +35,16 @@
 
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
+
 - (void)initialSetUp
 {
+    self.navigationController.navigationBarHidden = YES;
+    
     self.locationManager = [[CLLocationManager alloc] init];
     [self.locationManager startUpdatingLocation];
 
@@ -57,7 +67,41 @@
     
     [self.buttonsView.settingsButton addTarget:self action:@selector(settingsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.buttonsView.currentLocationButton addTarget:self action:@selector(currentLocationButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    self.drawingView = [[CCDrawableView alloc] initWithFrame:self.view.bounds];
+    self.drawingView.hidden = YES;
+    [self.view addSubview:self.drawingView];
+    
+    UILongPressGestureRecognizer *longPressForDrawing = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(drawRouteLine:)];
+    longPressForDrawing.minimumPressDuration = 0.8f;
+    longPressForDrawing.allowableMovement = 10.0;
+    longPressForDrawing.numberOfTouchesRequired = 1;
+    [self.mapView addGestureRecognizer:longPressForDrawing];
     
 }
 
+
+
+#pragma mark - Bottom buttons methods
+
+- (void)settingsButtonPressed:(CCRoundedButton *)sender
+{
+
+    [self performSegueWithIdentifier:@"pushToSettings" sender:self.buttonsView.settingsButton];
+    self.navigationController.navigationBarHidden = NO;
+}
+
+- (void)currentLocationButtonPressed:(CCRoundedButton *)sender
+{
+
+    
+}
+
+#pragma mark - Gesture Recognizer methods
+
+- (void)drawRouteLine:(UILongPressGestureRecognizer *)sender
+{
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        self.drawingView.hidden = NO;
+    }
+}
 @end

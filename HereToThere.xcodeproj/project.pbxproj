@@ -27,6 +27,8 @@
 		8DBD9E97192E5FDC0036B30A /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DBD9E93192E5FDC0036B30A /* settings.png */; };
 		8DBD9E98192E5FDC0036B30A /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DBD9E94192E5FDC0036B30A /* settings@2x.png */; };
 		8DBD9E9F192E612C0036B30A /* CCSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DBD9E9E192E612C0036B30A /* CCSettingsViewController.m */; };
+		8DBD9EA2192E7D8A0036B30A /* CCDrawableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DBD9EA1192E7D8A0036B30A /* CCDrawableView.m */; };
+		8DBD9EA5192E7DC70036B30A /* CCLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DBD9EA4192E7DC70036B30A /* CCLine.m */; };
 		8DD5C343192E591F003D6F06 /* CCRoundedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD5C342192E591F003D6F06 /* CCRoundedButton.m */; };
 		8DD5C349192E5B4A003D6F06 /* CCViewForButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD5C348192E5B4A003D6F06 /* CCViewForButtons.m */; };
 /* End PBXBuildFile section */
@@ -68,6 +70,10 @@
 		8DBD9E94192E5FDC0036B30A /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		8DBD9E9D192E612C0036B30A /* CCSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSettingsViewController.h; sourceTree = "<group>"; };
 		8DBD9E9E192E612C0036B30A /* CCSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSettingsViewController.m; sourceTree = "<group>"; };
+		8DBD9EA0192E7D8A0036B30A /* CCDrawableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDrawableView.h; sourceTree = "<group>"; };
+		8DBD9EA1192E7D8A0036B30A /* CCDrawableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDrawableView.m; sourceTree = "<group>"; };
+		8DBD9EA3192E7DC70036B30A /* CCLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLine.h; sourceTree = "<group>"; };
+		8DBD9EA4192E7DC70036B30A /* CCLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCLine.m; sourceTree = "<group>"; };
 		8DD5C341192E591F003D6F06 /* CCRoundedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCRoundedButton.h; sourceTree = "<group>"; };
 		8DD5C342192E591F003D6F06 /* CCRoundedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCRoundedButton.m; sourceTree = "<group>"; };
 		8DD5C347192E5B4A003D6F06 /* CCViewForButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCViewForButtons.h; sourceTree = "<group>"; };
@@ -135,6 +141,7 @@
 				8D5DD0E7192591CA002A7E68 /* CCAppDelegate.m */,
 				8D5DD0E9192591CA002A7E68 /* Main.storyboard */,
 				8DBD9E9C192E60E60036B30A /* UI */,
+				8DBD9EA6192E7DD20036B30A /* Drawing */,
 				8DBD9E9B192E60D20036B30A /* Controllers */,
 				8DBD9E9A192E60C20036B30A /* Views */,
 				8DBD9E99192E5FED0036B30A /* Images */,
@@ -188,6 +195,8 @@
 		8DBD9E9A192E60C20036B30A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8DBD9EA0192E7D8A0036B30A /* CCDrawableView.h */,
+				8DBD9EA1192E7D8A0036B30A /* CCDrawableView.m */,
 				8DD5C347192E5B4A003D6F06 /* CCViewForButtons.h */,
 				8DD5C348192E5B4A003D6F06 /* CCViewForButtons.m */,
 			);
@@ -212,6 +221,15 @@
 				8DD5C342192E591F003D6F06 /* CCRoundedButton.m */,
 			);
 			name = UI;
+			sourceTree = "<group>";
+		};
+		8DBD9EA6192E7DD20036B30A /* Drawing */ = {
+			isa = PBXGroup;
+			children = (
+				8DBD9EA3192E7DC70036B30A /* CCLine.h */,
+				8DBD9EA4192E7DC70036B30A /* CCLine.m */,
+			);
+			name = Drawing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,6 +335,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DBD9EA2192E7D8A0036B30A /* CCDrawableView.m in Sources */,
+				8DBD9EA5192E7DC70036B30A /* CCLine.m in Sources */,
 				8D9491C21926E2F500A24DEB /* CCMapViewController.m in Sources */,
 				8DD5C349192E5B4A003D6F06 /* CCViewForButtons.m in Sources */,
 				8D5DD0E8192591CA002A7E68 /* CCAppDelegate.m in Sources */,
