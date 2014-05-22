@@ -12,12 +12,14 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface CCMapViewController ()
+@interface CCMapViewController () <RouteLineDrawingDelegate>
 
 @property (strong, nonatomic) MKMapView *mapView;
 @property (strong, nonatomic) CCViewForButtons *buttonsView;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CCDrawableView *drawingView;
+
+@property (strong, nonatomic) NSOperationQueue *drawingQueue;
 
 @end
 
@@ -67,15 +69,23 @@
     
     [self.buttonsView.settingsButton addTarget:self action:@selector(settingsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.buttonsView.currentLocationButton addTarget:self action:@selector(currentLocationButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    self.drawingView = [[CCDrawableView alloc] initWithFrame:self.view.bounds];
-    self.drawingView.hidden = YES;
-    [self.view addSubview:self.drawingView];
     
     UILongPressGestureRecognizer *longPressForDrawing = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(drawRouteLine:)];
     longPressForDrawing.minimumPressDuration = 0.8f;
     longPressForDrawing.allowableMovement = 10.0;
     longPressForDrawing.numberOfTouchesRequired = 1;
     [self.mapView addGestureRecognizer:longPressForDrawing];
+    
+    self.drawingQueue = [[NSOperationQueue alloc] init];
+    [self.drawingQueue addOperationWithBlock:^{
+        self.drawingView = [[CCDrawableView alloc] initWithFrame:self.view.bounds];
+        self.drawingView.hidden = YES;
+        [self.view addSubview:self.drawingView];
+        self.drawingView.delegate = self;
+        
+    }];
+    
+
     
 }
 
@@ -102,6 +112,15 @@
 {
     if (sender.state == UIGestureRecognizerStateBegan) {
         self.drawingView.hidden = NO;
+        self.buttonsView.hidden = YES;
     }
+}
+
+#pragma mark - RouteLineDrawingDelegate methods
+
+- (void)drawingViewClosedWithoutRoute
+{
+    self.drawingView.hidden = YES;
+    self.buttonsView.hidden = NO;
 }
 @end

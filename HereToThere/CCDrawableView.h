@@ -9,7 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "CCLine.h"
 
+@protocol RouteLineDrawingDelegate <NSObject>
+
+- (void)drawingViewClosedWithoutRoute;
+
+@end
+
 @interface CCDrawableView : UIView
+
+@property (unsafe_unretained) id <RouteLineDrawingDelegate> delegate;
 
 @property (strong, nonatomic) CCLine *line;
 

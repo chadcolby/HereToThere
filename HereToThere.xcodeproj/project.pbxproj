@@ -29,6 +29,12 @@
 		8DBD9E9F192E612C0036B30A /* CCSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DBD9E9E192E612C0036B30A /* CCSettingsViewController.m */; };
 		8DBD9EA2192E7D8A0036B30A /* CCDrawableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DBD9EA1192E7D8A0036B30A /* CCDrawableView.m */; };
 		8DBD9EA5192E7DC70036B30A /* CCLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DBD9EA4192E7DC70036B30A /* CCLine.m */; };
+		8DBD9EA9192E86F60036B30A /* Upload.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DBD9EA7192E86F60036B30A /* Upload.png */; };
+		8DBD9EAA192E86F60036B30A /* Upload@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DBD9EA8192E86F60036B30A /* Upload@2x.png */; };
+		8DBD9EAD192E874F0036B30A /* Map_Path.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DBD9EAB192E874F0036B30A /* Map_Path.png */; };
+		8DBD9EAE192E874F0036B30A /* Map_Path@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DBD9EAC192E874F0036B30A /* Map_Path@2x.png */; };
+		8DBD9EB0192E89F00036B30A /* Multiply.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DBD9EAF192E89F00036B30A /* Multiply.png */; };
+		8DBD9EB2192E89FB0036B30A /* Multiply@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DBD9EB1192E89FB0036B30A /* Multiply@2x.png */; };
 		8DD5C343192E591F003D6F06 /* CCRoundedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD5C342192E591F003D6F06 /* CCRoundedButton.m */; };
 		8DD5C349192E5B4A003D6F06 /* CCViewForButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD5C348192E5B4A003D6F06 /* CCViewForButtons.m */; };
 /* End PBXBuildFile section */
@@ -74,6 +80,12 @@
 		8DBD9EA1192E7D8A0036B30A /* CCDrawableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDrawableView.m; sourceTree = "<group>"; };
 		8DBD9EA3192E7DC70036B30A /* CCLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLine.h; sourceTree = "<group>"; };
 		8DBD9EA4192E7DC70036B30A /* CCLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCLine.m; sourceTree = "<group>"; };
+		8DBD9EA7192E86F60036B30A /* Upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Upload.png; sourceTree = "<group>"; };
+		8DBD9EA8192E86F60036B30A /* Upload@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Upload@2x.png"; sourceTree = "<group>"; };
+		8DBD9EAB192E874F0036B30A /* Map_Path.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Map_Path.png; sourceTree = "<group>"; };
+		8DBD9EAC192E874F0036B30A /* Map_Path@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Map_Path@2x.png"; sourceTree = "<group>"; };
+		8DBD9EAF192E89F00036B30A /* Multiply.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Multiply.png; sourceTree = "<group>"; };
+		8DBD9EB1192E89FB0036B30A /* Multiply@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Multiply@2x.png"; sourceTree = "<group>"; };
 		8DD5C341192E591F003D6F06 /* CCRoundedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCRoundedButton.h; sourceTree = "<group>"; };
 		8DD5C342192E591F003D6F06 /* CCRoundedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCRoundedButton.m; sourceTree = "<group>"; };
 		8DD5C347192E5B4A003D6F06 /* CCViewForButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCViewForButtons.h; sourceTree = "<group>"; };
@@ -183,6 +195,12 @@
 		8DBD9E99192E5FED0036B30A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8DBD9EB1192E89FB0036B30A /* Multiply@2x.png */,
+				8DBD9EAF192E89F00036B30A /* Multiply.png */,
+				8DBD9EAB192E874F0036B30A /* Map_Path.png */,
+				8DBD9EAC192E874F0036B30A /* Map_Path@2x.png */,
+				8DBD9EA7192E86F60036B30A /* Upload.png */,
+				8DBD9EA8192E86F60036B30A /* Upload@2x.png */,
 				8DBD9E91192E5FDC0036B30A /* currentLocation.png */,
 				8DBD9E92192E5FDC0036B30A /* currentLocation@2x.png */,
 				8DBD9E93192E5FDC0036B30A /* settings.png */,
@@ -310,9 +328,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DBD9E90192E5F920036B30A /* edgeColor.png in Resources */,
+				8DBD9EAA192E86F60036B30A /* Upload@2x.png in Resources */,
+				8DBD9EAE192E874F0036B30A /* Map_Path@2x.png in Resources */,
 				8DBD9E97192E5FDC0036B30A /* settings.png in Resources */,
+				8DBD9EAD192E874F0036B30A /* Map_Path.png in Resources */,
 				8DBD9E95192E5FDC0036B30A /* currentLocation.png in Resources */,
 				8D5DD0F0192591CA002A7E68 /* Images.xcassets in Resources */,
+				8DBD9EA9192E86F60036B30A /* Upload.png in Resources */,
+				8DBD9EB2192E89FB0036B30A /* Multiply@2x.png in Resources */,
+				8DBD9EB0192E89F00036B30A /* Multiply.png in Resources */,
 				8DBD9E96192E5FDC0036B30A /* currentLocation@2x.png in Resources */,
 				8DBD9E98192E5FDC0036B30A /* settings@2x.png in Resources */,
 				8D5DD0E2192591CA002A7E68 /* InfoPlist.strings in Resources */,

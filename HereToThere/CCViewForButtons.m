@@ -20,6 +20,16 @@
     }
     return self;
 }
+- (id)initForDrawingView:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.backgroundColor = [UIColor clearColor];
+        [self drawingableViewSetUp];
+    }
+    
+    return self;
+}
 
 - (void)buttonsSetUp
 {
@@ -32,5 +42,25 @@
                                                                              self.bounds.origin.y + 20)];
     [self.currentLocationButton setImage:[UIImage imageNamed:@"currentLocation"] forState:UIControlStateNormal];
     [self addSubview:self.currentLocationButton];
+}
+
+- (void)drawingableViewSetUp
+{
+    self.forwardButton = [[CCRoundedButton alloc]initWithOrigin:CGPointMake((self.bounds.size.width / 2) - 105,
+                                                                             self.bounds.origin.y + 20)];
+    [self.forwardButton setImage:[UIImage imageNamed:@"Upload"] forState:UIControlStateNormal];
+    [self addSubview:self.forwardButton];
+    
+    self.routeButton= [[CCRoundedButton alloc]initWithOrigin:CGPointMake((self.bounds.size.width / 2) - 25,
+                                                                             self.bounds.origin.y + 20)];
+    [self.routeButton setImage:[UIImage imageNamed:@"Map_Path"] forState:UIControlStateNormal];
+    [self addSubview:self.routeButton];
+    
+    self.closeButton= [[CCRoundedButton alloc]initWithOrigin:CGPointMake((self.bounds.size.width / 2) + 55,
+                                                                         self.bounds.origin.y + 20)];
+    [self.closeButton setImage:[UIImage imageNamed:@"Multiply"] forState:UIControlStateNormal];
+    [self addSubview:self.closeButton];
+    
+    self.forwardButton.enabled = NO;
 }
 @end

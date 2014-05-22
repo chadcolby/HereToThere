@@ -13,5 +13,10 @@
 
 @property (strong, nonatomic) CCRoundedButton *settingsButton;
 @property (strong, nonatomic) CCRoundedButton *currentLocationButton;
+@property (strong, nonatomic) CCRoundedButton *forwardButton;
+@property (strong, nonatomic) CCRoundedButton *routeButton;
+@property (strong, nonatomic) CCRoundedButton *closeButton;
+
+- (id)initForDrawingView:(CGRect)frame;
 
 @end

@@ -7,6 +7,13 @@
 //
 
 #import "CCDrawableView.h"
+#import "CCViewForButtons.h"
+
+@interface CCDrawableView ()
+
+@property (strong, nonatomic) CCViewForButtons *buttonsView;
+
+@end
 
 @implementation CCDrawableView
 
@@ -21,7 +28,10 @@
         self.backgroundColor = [UIColor clearColor];
         self.multipleTouchEnabled = NO;
         
+        self.buttonsView = [[CCViewForButtons alloc] initForDrawingView:CGRectMake(0, self.bounds.size.height - 80, self.bounds.size.width, self.bounds.size.height)];
+        [self addSubview:self.buttonsView];
         
+        [self.buttonsView.closeButton addTarget:self action:@selector(closeButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 
     }
     return self;
@@ -73,6 +83,10 @@
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    if (!self.buttonsView.forwardButton.enabled) {
+        self.buttonsView.forwardButton.enabled = YES;
+    }
+    
     for (UITouch *movingTouch in touches) {
         NSValue *anotherKey = [NSValue valueWithNonretainedObject:movingTouch];
         CCLine *anotherNewLine = [self.linesInProgress objectForKey:anotherKey];
@@ -95,6 +109,10 @@
 
 - (void)clearAllLines
 {
+    [self.linesInProgress removeAllObjects];
+    [self.completedLines removeAllObjects];
+    
+    [self setNeedsDisplay];
     
 }
 
@@ -112,6 +130,13 @@
     }
     [self setNeedsDisplay];
     
+}
+
+- (void)closeButtonPressed:(CCRoundedButton *)sender
+{
+    [self clearAllLines];
+    [self.delegate drawingViewClosedWithoutRoute];
+    self.buttonsView.forwardButton.enabled = NO;
 }
 
 @end
