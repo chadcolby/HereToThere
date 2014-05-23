@@ -55,6 +55,7 @@
                                                                              self.bounds.origin.y + 20)];
     [self.routeButton setImage:[UIImage imageNamed:@"Map_Path"] forState:UIControlStateNormal];
     [self addSubview:self.routeButton];
+    self.routeButton.enabled = NO;
     
     self.closeButton= [[CCRoundedButton alloc]initWithOrigin:CGPointMake((self.bounds.size.width / 2) + 55,
                                                                          self.bounds.origin.y + 20)];

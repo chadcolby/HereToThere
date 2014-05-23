@@ -7,11 +7,8 @@
 //
 
 #import "CCDrawableView.h"
-#import "CCViewForButtons.h"
 
 @interface CCDrawableView ()
-
-@property (strong, nonatomic) CCViewForButtons *buttonsView;
 
 @end
 
@@ -32,7 +29,7 @@
         [self addSubview:self.buttonsView];
         
         [self.buttonsView.closeButton addTarget:self action:@selector(closeButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-
+        [self.buttonsView.routeButton addTarget:self action:@selector(routeFromLine:) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
 }
@@ -40,7 +37,7 @@
 - (void)drawRect:(CGRect)rect
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetLineWidth(context, 5.f);
+    CGContextSetLineWidth(context, 3.f);
     CGContextSetLineCap(context, kCGLineCapRound);
     
     [[UIColor colorWithRed:23.f/255 green:20.f/255 blue:70.f/255 alpha:1.f] set];
@@ -126,6 +123,7 @@
         if (completedLine) {
             [self.completedLines addObject:completedLine];
             [self.linesInProgress removeObjectForKey:key];
+            [self.delegate mapPointsFromDrawnLine:completedLine];
         }
     }
     [self setNeedsDisplay];
@@ -137,6 +135,13 @@
     [self clearAllLines];
     [self.delegate drawingViewClosedWithoutRoute];
     self.buttonsView.forwardButton.enabled = NO;
+}
+
+- (void)routeFromLine:(CCRoundedButton *)sender
+{
+    [self.delegate routeFromDrawnLine];
+    [self clearAllLines];
+    self.hidden = YES;
 }
 
 @end

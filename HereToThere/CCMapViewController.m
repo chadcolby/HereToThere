@@ -12,12 +12,18 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface CCMapViewController () <RouteLineDrawingDelegate>
+@interface CCMapViewController () <RouteLineDrawingDelegate, MKMapViewDelegate>
 
 @property (strong, nonatomic) MKMapView *mapView;
 @property (strong, nonatomic) CCViewForButtons *buttonsView;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CCDrawableView *drawingView;
+
+@property (nonatomic) CLLocationCoordinate2D starCoord;
+@property (nonatomic) CLLocationCoordinate2D endCoord;
+@property (strong, nonatomic) CLGeocoder *geocoder;
+@property (strong, nonatomic) MKPlacemark *endPlacemark;
+@property (strong, nonatomic) MKRoute *routeDetails;
 
 @property (strong, nonatomic) NSOperationQueue *drawingQueue;
 
@@ -53,6 +59,7 @@
     self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.mapView.showsUserLocation = YES;
+    self.mapView.delegate = self;
     
     MKCoordinateRegion region;
     region.center.latitude = self.locationManager.location.coordinate.latitude;
@@ -69,6 +76,7 @@
     
     [self.buttonsView.settingsButton addTarget:self action:@selector(settingsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.buttonsView.currentLocationButton addTarget:self action:@selector(currentLocationButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+
     
     UILongPressGestureRecognizer *longPressForDrawing = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(drawRouteLine:)];
     longPressForDrawing.minimumPressDuration = 0.8f;
@@ -102,7 +110,12 @@
 
 - (void)currentLocationButtonPressed:(CCRoundedButton *)sender
 {
-
+//    self.mapView.centerCoordinate = self.locationManager.location.coordinate;
+    MKCoordinateRegion locationCenteredRegion;
+    locationCenteredRegion.center.latitude = self.locationManager.location.coordinate.latitude;
+    locationCenteredRegion.center.longitude = self.locationManager.location.coordinate.longitude;
+    locationCenteredRegion.span = self.mapView.region.span;
+    [self.mapView setRegion:locationCenteredRegion animated:YES];
     
 }
 
@@ -113,6 +126,7 @@
     if (sender.state == UIGestureRecognizerStateBegan) {
         self.drawingView.hidden = NO;
         self.buttonsView.hidden = YES;
+        self.drawingView.buttonsView.routeButton.enabled = NO;
     }
 }
 
@@ -123,4 +137,56 @@
     self.drawingView.hidden = YES;
     self.buttonsView.hidden = NO;
 }
+
+- (void)mapPointsFromDrawnLine:(CCLine *)line
+{
+    NSLog(@"i have coordinates");
+    self.starCoord = [self.mapView convertPoint:line.startPoint toCoordinateFromView:self.mapView];
+    self.endCoord = [self.mapView convertPoint:line.endPoint toCoordinateFromView:self.mapView];
+    self.drawingView.buttonsView.routeButton.enabled = YES;
+
+}
+
+- (void)routeFromDrawnLine
+{
+    if (!self.geocoder) {
+        self.geocoder = [[CLGeocoder alloc] init];
+    }
+
+    CLLocation *endLocation = [[CLLocation alloc] initWithLatitude:self.endCoord.latitude longitude:self.endCoord.longitude];
+    //CLLocation *startLocation = [[CLLocation alloc] initWithLatitude:self.startCoordinate.latitude longitude:self.startCoordinate.longitude];
+    [self.geocoder reverseGeocodeLocation:endLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (error) {
+            NSLog(@"%@", error);
+        } else {
+            self.endPlacemark = [[MKPlacemark alloc] initWithPlacemark:[placemarks lastObject]];
+            MKDirectionsRequest *directionsRequest = [[MKDirectionsRequest alloc] init];
+            [directionsRequest setSource:[MKMapItem mapItemForCurrentLocation]];
+            [directionsRequest setDestination:[[MKMapItem alloc] initWithPlacemark:self.endPlacemark]];
+            directionsRequest.transportType = MKDirectionsTransportTypeAutomobile;
+            MKDirections *directions = [[MKDirections alloc] initWithRequest:directionsRequest];
+            [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
+                if (error) {
+                    NSLog(@"Error >> %@", error.description);
+                } else {
+                    self.routeDetails = response.routes.lastObject;
+                    [self.mapView addOverlay:self.routeDetails.polyline];
+                    self.buttonsView.hidden = NO;
+                }
+            }];
+        }
+    }];
+}
+
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+{
+    MKPolylineRenderer *routeLineRenderer = [[MKPolylineRenderer alloc] initWithPolyline:self.routeDetails.polyline];
+    routeLineRenderer.strokeColor = [UIColor colorWithRed:23.f/255 green:20.f/255 blue:70.f/255 alpha:1.f];
+    routeLineRenderer.lineWidth = 3;
+    return routeLineRenderer;
+}
+
+#pragma mark - MapViewDelegate methods
+
+
 @end

@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "CCLine.h"
+#import "CCViewForButtons.h"
 
 @protocol RouteLineDrawingDelegate <NSObject>
 
 - (void)drawingViewClosedWithoutRoute;
+- (void)mapPointsFromDrawnLine:(CCLine *)line;
+- (void)routeFromDrawnLine;
 
 @end
 
@@ -20,7 +23,7 @@
 @property (unsafe_unretained) id <RouteLineDrawingDelegate> delegate;
 
 @property (strong, nonatomic) CCLine *line;
-
+@property (strong, nonatomic) CCViewForButtons *buttonsView;
 @property (strong, nonatomic) NSMutableArray *completedLines;
 @property (strong, nonatomic) NSMutableDictionary *linesInProgress;
 

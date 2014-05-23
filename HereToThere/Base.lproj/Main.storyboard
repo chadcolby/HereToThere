@@ -48,7 +48,7 @@
         <!--Navigation Controller-->
         <scene sceneID="7C1-pv-Xr1">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h4A-2r-NlA" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mapNavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h4A-2r-NlA" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nfQ-wI-jDb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -66,7 +66,7 @@
         <!--Navigation Controller-->
         <scene sceneID="JMW-Rf-Nvo">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OeC-VO-Qz0" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="settingsNavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OeC-VO-Qz0" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="8ae-t7-r5n"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MoK-OI-j60">
@@ -89,6 +89,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="8aD-x7-QoE"/>
+        <segue reference="Q1W-2p-k0B"/>
     </inferredMetricsTieBreakers>
 </document>
