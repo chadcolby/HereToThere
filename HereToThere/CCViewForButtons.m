@@ -64,4 +64,18 @@
     
     self.forwardButton.enabled = NO;
 }
+
+- (void)updateMapViewForRoute
+{
+    if (!self.forwardButton) {
+        self.forwardButton = [[CCRoundedButton alloc] initWithOrigin:CGPointMake((self.bounds.size.width / 2) - 105,
+                                                                                 self.bounds.origin.y + 20)];
+        [self.forwardButton setImage:[UIImage imageNamed:@"Upload"] forState:UIControlStateNormal];
+        [self addSubview:self.forwardButton];
+    }
+    self.settingsButton.center = CGPointMake((self.bounds.size.width / 2) + 80,
+                                                   self.bounds.origin.y + 45);
+    self.currentLocationButton.center = CGPointMake((self.bounds.size.width / 2), self.bounds.origin.y + 45);
+    
+}
 @end

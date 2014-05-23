@@ -9,6 +9,7 @@
 #import "CCMapViewController.h"
 #import "CCViewForButtons.h"
 #import "CCDrawableView.h"
+#import "CCPinAnnotation.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
@@ -16,9 +17,9 @@
 
 @property (strong, nonatomic) MKMapView *mapView;
 @property (strong, nonatomic) CCViewForButtons *buttonsView;
-@property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CCDrawableView *drawingView;
 
+@property (strong, nonatomic) CLLocationManager *locationManager;
 @property (nonatomic) CLLocationCoordinate2D starCoord;
 @property (nonatomic) CLLocationCoordinate2D endCoord;
 @property (strong, nonatomic) CLGeocoder *geocoder;
@@ -26,6 +27,7 @@
 @property (strong, nonatomic) MKRoute *routeDetails;
 
 @property (strong, nonatomic) NSOperationQueue *drawingQueue;
+@property (strong, nonatomic) NSString *directionSteps;
 
 @end
 
@@ -124,6 +126,9 @@
 - (void)drawRouteLine:(UILongPressGestureRecognizer *)sender
 {
     if (sender.state == UIGestureRecognizerStateBegan) {
+        if (self.routeDetails) {
+            [self.mapView removeOverlay:self.routeDetails.polyline];
+        }
         self.drawingView.hidden = NO;
         self.buttonsView.hidden = YES;
         self.drawingView.buttonsView.routeButton.enabled = NO;
@@ -140,7 +145,6 @@
 
 - (void)mapPointsFromDrawnLine:(CCLine *)line
 {
-    NSLog(@"i have coordinates");
     self.starCoord = [self.mapView convertPoint:line.startPoint toCoordinateFromView:self.mapView];
     self.endCoord = [self.mapView convertPoint:line.endPoint toCoordinateFromView:self.mapView];
     self.drawingView.buttonsView.routeButton.enabled = YES;
@@ -152,7 +156,8 @@
     if (!self.geocoder) {
         self.geocoder = [[CLGeocoder alloc] init];
     }
-
+    [self.buttonsView updateMapViewForRoute];
+    
     CLLocation *endLocation = [[CLLocation alloc] initWithLatitude:self.endCoord.latitude longitude:self.endCoord.longitude];
     //CLLocation *startLocation = [[CLLocation alloc] initWithLatitude:self.startCoordinate.latitude longitude:self.startCoordinate.longitude];
     [self.geocoder reverseGeocodeLocation:endLocation completionHandler:^(NSArray *placemarks, NSError *error) {
@@ -172,6 +177,14 @@
                     self.routeDetails = response.routes.lastObject;
                     [self.mapView addOverlay:self.routeDetails.polyline];
                     self.buttonsView.hidden = NO;
+                    [self dropPinForEndPoint];
+                    for (int i = 0; i < self.routeDetails.steps.count; i++) {
+                        MKRouteStep *step = [self.routeDetails.steps objectAtIndex:i];
+                        NSString *newStep = step.instructions;
+                        NSLog(@"step: %@", newStep);
+                        self.directionSteps = [self.directionSteps stringByAppendingString:newStep];
+                        self.directionSteps = [self.directionSteps stringByAppendingString:@"\n"];
+                    }
                 }
             }];
         }
@@ -186,6 +199,12 @@
     return routeLineRenderer;
 }
 
+- (void)dropPinForEndPoint
+{
+    CCPinAnnotation *pinDrop = [[CCPinAnnotation alloc] initWithPoint:self.endCoord];
+    [self.mapView addAnnotation:pinDrop];
+    
+}
 #pragma mark - MapViewDelegate methods
 
 

@@ -18,5 +18,6 @@
 @property (strong, nonatomic) CCRoundedButton *closeButton;
 
 - (id)initForDrawingView:(CGRect)frame;
+- (void)updateMapViewForRoute;
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D4B9C861930083A00163A9D /* CCPinAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4B9C851930083A00163A9D /* CCPinAnnotation.m */; };
 		8D5DD0D8192591CA002A7E68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5DD0D7192591CA002A7E68 /* Foundation.framework */; };
 		8D5DD0DA192591CA002A7E68 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5DD0D9192591CA002A7E68 /* CoreGraphics.framework */; };
 		8D5DD0DC192591CA002A7E68 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5DD0DB192591CA002A7E68 /* UIKit.framework */; };
@@ -50,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8D4B9C841930083A00163A9D /* CCPinAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPinAnnotation.h; sourceTree = "<group>"; };
+		8D4B9C851930083A00163A9D /* CCPinAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCPinAnnotation.m; sourceTree = "<group>"; };
 		8D5DD0D4192591CA002A7E68 /* HereToThere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HereToThere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5DD0D7192591CA002A7E68 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8D5DD0D9192591CA002A7E68 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -237,6 +240,8 @@
 			children = (
 				8DD5C341192E591F003D6F06 /* CCRoundedButton.h */,
 				8DD5C342192E591F003D6F06 /* CCRoundedButton.m */,
+				8D4B9C841930083A00163A9D /* CCPinAnnotation.h */,
+				8D4B9C851930083A00163A9D /* CCPinAnnotation.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -360,6 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DBD9EA2192E7D8A0036B30A /* CCDrawableView.m in Sources */,
+				8D4B9C861930083A00163A9D /* CCPinAnnotation.m in Sources */,
 				8DBD9EA5192E7DC70036B30A /* CCLine.m in Sources */,
 				8D9491C21926E2F500A24DEB /* CCMapViewController.m in Sources */,
 				8DD5C349192E5B4A003D6F06 /* CCViewForButtons.m in Sources */,
