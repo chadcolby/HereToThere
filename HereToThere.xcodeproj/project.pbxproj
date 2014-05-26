@@ -22,6 +22,7 @@
 		8D5DD101192591CA002A7E68 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D5DD0FF192591CA002A7E68 /* InfoPlist.strings */; };
 		8D5DD103192591CA002A7E68 /* HereToThereTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5DD102192591CA002A7E68 /* HereToThereTests.m */; };
 		8D6A728C193305E0005B1122 /* CCFingerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6A728B193305E0005B1122 /* CCFingerView.m */; };
+		8D92449E1933E200001E0960 /* CCDirectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D92449D1933E200001E0960 /* CCDirectionsViewController.m */; };
 		8D9491C21926E2F500A24DEB /* CCMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9491C11926E2F500A24DEB /* CCMapViewController.m */; };
 		8DA7DC541933D65E009B16D8 /* steps.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DA7DC521933D65E009B16D8 /* steps.png */; };
 		8DA7DC551933D65E009B16D8 /* steps@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DA7DC531933D65E009B16D8 /* steps@2x.png */; };
@@ -75,6 +76,8 @@
 		8D5DD102192591CA002A7E68 /* HereToThereTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HereToThereTests.m; sourceTree = "<group>"; };
 		8D6A728A193305E0005B1122 /* CCFingerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCFingerView.h; sourceTree = "<group>"; };
 		8D6A728B193305E0005B1122 /* CCFingerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCFingerView.m; sourceTree = "<group>"; };
+		8D92449C1933E200001E0960 /* CCDirectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDirectionsViewController.h; sourceTree = "<group>"; };
+		8D92449D1933E200001E0960 /* CCDirectionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDirectionsViewController.m; sourceTree = "<group>"; };
 		8D9491C01926E2F500A24DEB /* CCMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMapViewController.h; sourceTree = "<group>"; };
 		8D9491C11926E2F500A24DEB /* CCMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMapViewController.m; sourceTree = "<group>"; };
 		8DA7DC521933D65E009B16D8 /* steps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = steps.png; sourceTree = "<group>"; };
@@ -238,6 +241,8 @@
 		8DBD9E9B192E60D20036B30A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8D92449C1933E200001E0960 /* CCDirectionsViewController.h */,
+				8D92449D1933E200001E0960 /* CCDirectionsViewController.m */,
 				8DBD9E9D192E612C0036B30A /* CCSettingsViewController.h */,
 				8DBD9E9E192E612C0036B30A /* CCSettingsViewController.m */,
 				8D9491C01926E2F500A24DEB /* CCMapViewController.h */,
@@ -386,6 +391,7 @@
 				8D5DD0E8192591CA002A7E68 /* CCAppDelegate.m in Sources */,
 				8DBD9E9F192E612C0036B30A /* CCSettingsViewController.m in Sources */,
 				8D5DD0E4192591CA002A7E68 /* main.m in Sources */,
+				8D92449E1933E200001E0960 /* CCDirectionsViewController.m in Sources */,
 				8DD5C343192E591F003D6F06 /* CCRoundedButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
