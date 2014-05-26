@@ -128,6 +128,7 @@
     if (sender.state == UIGestureRecognizerStateBegan) {
         if (self.routeDetails) {
             [self.mapView removeOverlay:self.routeDetails.polyline];
+            [self.mapView removeAnnotations:self.mapView.annotations];
         }
         self.drawingView.hidden = NO;
         self.buttonsView.hidden = YES;
