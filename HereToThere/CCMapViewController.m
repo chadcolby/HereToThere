@@ -78,7 +78,6 @@
     
     [self.buttonsView.settingsButton addTarget:self action:@selector(settingsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.buttonsView.currentLocationButton addTarget:self action:@selector(currentLocationButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-
     
     UILongPressGestureRecognizer *longPressForDrawing = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(drawRouteLine:)];
     longPressForDrawing.minimumPressDuration = 0.8f;
@@ -112,13 +111,18 @@
 
 - (void)currentLocationButtonPressed:(CCRoundedButton *)sender
 {
-//    self.mapView.centerCoordinate = self.locationManager.location.coordinate;
+
     MKCoordinateRegion locationCenteredRegion;
     locationCenteredRegion.center.latitude = self.locationManager.location.coordinate.latitude;
     locationCenteredRegion.center.longitude = self.locationManager.location.coordinate.longitude;
     locationCenteredRegion.span = self.mapView.region.span;
     [self.mapView setRegion:locationCenteredRegion animated:YES];
     
+}
+
+- (void)showRouteSteps:(CCRoundedButton *)sender
+{
+    [self performSegueWithIdentifier:@"modalToDirections" sender:self];
 }
 
 #pragma mark - Gesture Recognizer methods
@@ -190,6 +194,10 @@
             }];
         }
     }];
+    
+    if (self.buttonsView.stepsButton) {
+    [self.buttonsView.stepsButton addTarget:self action:@selector(showRouteSteps:) forControlEvents:UIControlEventTouchUpInside];
+    }
 }
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay

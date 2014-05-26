@@ -68,14 +68,24 @@
 - (void)updateMapViewForRoute
 {
     if (!self.forwardButton) {
-        self.forwardButton = [[CCRoundedButton alloc] initWithOrigin:CGPointMake((self.bounds.size.width / 2) - 105,
+        self.forwardButton = [[CCRoundedButton alloc] initWithOrigin:CGPointMake((self.bounds.origin.x + 24) ,
                                                                                  self.bounds.origin.y + 20)];
         [self.forwardButton setImage:[UIImage imageNamed:@"Upload"] forState:UIControlStateNormal];
         [self addSubview:self.forwardButton];
+
     }
-    self.settingsButton.center = CGPointMake((self.bounds.size.width / 2) + 80,
-                                                   self.bounds.origin.y + 45);
-    self.currentLocationButton.center = CGPointMake((self.bounds.size.width / 2), self.bounds.origin.y + 45);
+    
+    if (!self.stepsButton) {
+        self.stepsButton = [[CCRoundedButton alloc] initWithOrigin:CGPointMake((self.bounds.size.width / 2) + 14,
+                                                                                 self.bounds.origin.y + 20)];
+        [self.stepsButton setImage:[UIImage imageNamed:@"steps"] forState:UIControlStateNormal];
+        [self addSubview:self.stepsButton];
+
+    }
+    self.settingsButton.center = CGPointMake( self.bounds.size.width - 49, self.bounds.origin.y + 45);
+
+    self.currentLocationButton.center = CGPointMake((self.bounds.size.width / 2) - 39 , self.bounds.origin.y + 45);
+
     
 }
 @end
