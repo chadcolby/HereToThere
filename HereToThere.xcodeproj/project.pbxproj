@@ -21,6 +21,7 @@
 		8D5DD0F9192591CA002A7E68 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5DD0DB192591CA002A7E68 /* UIKit.framework */; };
 		8D5DD101192591CA002A7E68 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D5DD0FF192591CA002A7E68 /* InfoPlist.strings */; };
 		8D5DD103192591CA002A7E68 /* HereToThereTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5DD102192591CA002A7E68 /* HereToThereTests.m */; };
+		8D6A728C193305E0005B1122 /* CCFingerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6A728B193305E0005B1122 /* CCFingerView.m */; };
 		8D9491C21926E2F500A24DEB /* CCMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9491C11926E2F500A24DEB /* CCMapViewController.m */; };
 		8DBD9E90192E5F920036B30A /* edgeColor.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DBD9E8F192E5F920036B30A /* edgeColor.png */; };
 		8DBD9E95192E5FDC0036B30A /* currentLocation.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DBD9E91192E5FDC0036B30A /* currentLocation.png */; };
@@ -70,6 +71,8 @@
 		8D5DD0FE192591CA002A7E68 /* HereToThereTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HereToThereTests-Info.plist"; sourceTree = "<group>"; };
 		8D5DD100192591CA002A7E68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8D5DD102192591CA002A7E68 /* HereToThereTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HereToThereTests.m; sourceTree = "<group>"; };
+		8D6A728A193305E0005B1122 /* CCFingerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCFingerView.h; sourceTree = "<group>"; };
+		8D6A728B193305E0005B1122 /* CCFingerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCFingerView.m; sourceTree = "<group>"; };
 		8D9491C01926E2F500A24DEB /* CCMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMapViewController.h; sourceTree = "<group>"; };
 		8D9491C11926E2F500A24DEB /* CCMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMapViewController.m; sourceTree = "<group>"; };
 		8DBD9E8F192E5F920036B30A /* edgeColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edgeColor.png; sourceTree = "<group>"; };
@@ -216,6 +219,8 @@
 		8DBD9E9A192E60C20036B30A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8D6A728A193305E0005B1122 /* CCFingerView.h */,
+				8D6A728B193305E0005B1122 /* CCFingerView.m */,
 				8DBD9EA0192E7D8A0036B30A /* CCDrawableView.h */,
 				8DBD9EA1192E7D8A0036B30A /* CCDrawableView.m */,
 				8DD5C347192E5B4A003D6F06 /* CCViewForButtons.h */,
@@ -365,6 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DBD9EA2192E7D8A0036B30A /* CCDrawableView.m in Sources */,
+				8D6A728C193305E0005B1122 /* CCFingerView.m in Sources */,
 				8D4B9C861930083A00163A9D /* CCPinAnnotation.m in Sources */,
 				8DBD9EA5192E7DC70036B30A /* CCLine.m in Sources */,
 				8D9491C21926E2F500A24DEB /* CCMapViewController.m in Sources */,
