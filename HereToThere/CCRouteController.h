@@ -1,13 +1,13 @@
 //
-//  CCDirectionsViewController.h
+//  CCRouteController.h
 //  HereToThere
 //
 //  Created by Chad D Colby on 5/28/14.
 //  Copyright (c) 2014 Byte Meets World. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-@interface CCDirectionsViewController : UIViewController
+@interface CCRouteController : NSObject
 
 @end

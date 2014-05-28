@@ -1,5 +1,5 @@
 //
-//  CCDirectionsViewController.h
+//  CCMenuView.h
 //  HereToThere
 //
 //  Created by Chad D Colby on 5/28/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CCDirectionsViewController : UIViewController
+@interface CCMenuView : UIView
 
 @end

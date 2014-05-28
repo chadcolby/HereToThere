@@ -1,18 +1,18 @@
 //
-//  CCDirectionsViewController.m
+//  CCDrawingViewController.m
 //  HereToThere
 //
 //  Created by Chad D Colby on 5/28/14.
 //  Copyright (c) 2014 Byte Meets World. All rights reserved.
 //
 
-#import "CCDirectionsViewController.h"
+#import "CCDrawingViewController.h"
 
-@interface CCDirectionsViewController ()
+@interface CCDrawingViewController ()
 
 @end
 
-@implementation CCDirectionsViewController
+@implementation CCDrawingViewController
 
 - (void)viewDidLoad
 {
