@@ -8,7 +8,7 @@
 
 #import "CCDirectionsViewController.h"
 
-@interface CCDirectionsViewController ()
+@interface CCDirectionsViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @end
 
@@ -35,15 +35,23 @@
 
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - Collection View data source protocal methods
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    return 10;
 }
-*/
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor whiteColor];
+    
+    
+    return cell;
+}
+
+
+
 
 @end
