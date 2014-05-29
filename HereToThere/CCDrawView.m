@@ -7,7 +7,6 @@
 //
 
 #import "CCDrawView.h"
-#import "CCLine.h"
 
 @interface CCDrawView ()
 
@@ -19,10 +18,8 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        NSLog(@"self");
         self.multipleTouchEnabled = NO;
         self.backgroundColor = [UIColor clearColor];
-        
         self.linesInProgress = [[NSMutableDictionary alloc] init];
         self.completedLines = [[NSMutableArray alloc] init];
     }
@@ -61,7 +58,6 @@
         if (self.completedLines.count >= 1) {
             [self clearLines];
         }
-        
         NSValue *key = [NSValue valueWithNonretainedObject:finger];
         CGPoint lock = [finger locationInView:self];
         CCLine *anotherLine = [[CCLine alloc] init];
@@ -69,21 +65,18 @@
         anotherLine.endPoint = lock;
         [self.linesInProgress setObject:anotherLine forKey:key];
     }
-    
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     for (UITouch *touch in touches) {
-        
         NSValue *touchKey = [NSValue valueWithNonretainedObject:touch];
         CCLine *movingLine = [self.linesInProgress objectForKey:touchKey];
         CGPoint lock = [touch locationInView:self];
         movingLine.endPoint = lock;
+        [self.delegate updateButtons];
     }
-    
     [self setNeedsDisplay];
-    
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
@@ -100,9 +93,7 @@
 {
     [self.linesInProgress removeAllObjects];
     [self.completedLines removeAllObjects];
-    
     [self setNeedsDisplay];
-    
 }
 
 - (void) drawingDidEnd:(NSSet *)touches
@@ -110,15 +101,13 @@
     for (UITouch *touch in touches) {
         NSValue *key = [NSValue valueWithNonretainedObject:touch];
         CCLine *finishedLine = [self.linesInProgress objectForKey:key];
-        
         if (finishedLine) {
             [self.completedLines addObject:finishedLine];
             [self.linesInProgress removeObjectForKey:key];
+            [self.delegate MapPointsFromLine:finishedLine]; //updates controller with points without requesting mapPoints
         }
     }
-    
     [self setNeedsDisplay];
-    
 }
 
 @end

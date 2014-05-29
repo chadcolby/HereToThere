@@ -7,8 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CCLine.h"
+
+@protocol MapPointsFromDrawnLine <NSObject>
+
+- (void)MapPointsFromLine:(CCLine *)line;
+- (void)updateButtons;
+
+@end
 
 @interface CCDrawView : UIView
+
+@property (unsafe_unretained) id <MapPointsFromDrawnLine> delegate;
 
 @property (strong, nonatomic) NSMutableArray *completedLines;
 @property (strong, nonatomic) NSMutableDictionary *linesInProgress;

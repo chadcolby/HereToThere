@@ -7,17 +7,17 @@
 //
 
 #import "CCDrawingViewController.h"
-#import "CCDrawView.h"
 
-@interface CCDrawingViewController ()
-
+@interface CCDrawingViewController ()  <MapPointsFromDrawnLine>
 
 - (IBAction)routeButtonPressed:(id)sender;
 - (IBAction)backToMapButtonPressed:(id)sender;
 
 @property (weak, nonatomic) IBOutlet CCRoundButton *backToMapButton;
 @property (weak, nonatomic) IBOutlet CCRoundButton *routeButton;
-@property (strong, nonatomic) CCDrawView *drawView;
+
+@property (strong, nonatomic) NSOperationQueue *routeQueue;
+@property (strong, nonatomic) CCLine *lineForRoute;
 
 @end
 
@@ -34,6 +34,7 @@
 {
     [super viewDidAppear:animated];
     [self easeButtonsIn];
+    self.routeButton.enabled = NO;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -52,22 +53,45 @@
 - (void)initialSetUp
 {
     self.drawView = (CCDrawView *)self.view;
+    self.drawView.delegate = self;
     self.backToMapButton.alpha = 0.0f;
     self.routeButton.alpha = 0.0f;
+    self.routeButton.enabled = NO;
     
+}
+
+#pragma mark - MapPointFromDrawnLine methods
+
+- (void)MapPointsFromLine:(CCLine *)line      //called each time a line drawing event ends
+{
+    if (line) {
+        self.lineForRoute = line;
+    }   else
+    {
+        NSLog(@"bad line");
+    }
+    
+}
+
+- (void)updateButtons
+{
+    self.routeButton.enabled = YES;
 }
 
 #pragma mark - IBActions
 
 - (IBAction)routeButtonPressed:(id)sender
 {
-    
+    if (self.lineForRoute != nil) {
+        [self.delegate updateMapWithLineForRoute:self.lineForRoute];  //sends points to delegate for route
+    }
 }
 
 - (IBAction)backToMapButtonPressed:(id)sender
 {
-    [self.delegate endDrawingWithNoLine];
+    [self.delegate endDrawingWithNoLine];   //tells delegate there was no drawing event
     [self.drawView clearLines];
+
 }
 
 #pragma mark - Animations

@@ -11,7 +11,7 @@
 #import "CCMenuView.h"
 #import "CCDrawingViewController.h"
 
-@interface CCMapViewController () <UIGestureRecognizerDelegate, MKMapViewDelegate, RouteDrawingDelegate>
+@interface CCMapViewController () <UIGestureRecognizerDelegate, MKMapViewDelegate, DrawingVCDelegate>
 
 @property (strong, nonatomic) CCMenuView *menuView;
 @property (weak, nonatomic) IBOutlet CCRoundButton *moreButton;
@@ -33,13 +33,6 @@
     [super viewDidLoad];
     
     [self initialMapSetUp];
-    
-    self.longPressToDraw = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressForDrawing:)];
-    self.longPressToDraw.delegate = self;
-    self.longPressToDraw.minimumPressDuration = 0.8f;
-    self.longPressToDraw.allowableMovement = 10.0;
-    self.longPressToDraw.numberOfTouchesRequired = 1;
-    [self.mapView addGestureRecognizer:self.longPressToDraw];
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,6 +57,13 @@
                                                                  bounds.size.width, 100)];
     [self.view addSubview:self.menuView];
     self.closeMenuTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeMenu:)];
+    
+    self.longPressToDraw = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressForDrawing:)];
+    self.longPressToDraw.delegate = self;
+    self.longPressToDraw.minimumPressDuration = 0.8f;
+    self.longPressToDraw.allowableMovement = 10.0;
+    self.longPressToDraw.numberOfTouchesRequired = 1;
+    [self.mapView addGestureRecognizer:self.longPressToDraw];
 }
 
 - (void)showMenuViewAnimated:(BOOL)animated
@@ -80,6 +80,22 @@
             [self.view addGestureRecognizer:self.closeMenuTap];
         }];
     }
+}
+
+- (void)hideDrawingViewController
+{
+    [self.drawableViewController removeFromParentViewController];
+    [self.drawableViewController.view removeFromSuperview];
+}
+
+- (void)animateButtonFadeIn
+{
+    [UIView animateWithDuration:0.4f animations:^{
+        self.moreButton.alpha = 1.0f;
+        self.currentLocationButton.alpha = 1.0f;
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
 #pragma mark - gesture recognizers
@@ -135,17 +151,20 @@
     return drawViewController;
 }
 
+#pragma mark - DrawingVCDelegateMethods
+
 - (void)endDrawingWithNoLine
 {
-    [UIView animateWithDuration:0.4f animations:^{
-        self.moreButton.alpha = 1.0f;
-        self.currentLocationButton.alpha = 1.0f;
-    } completion:^(BOOL finished) {
+    [self hideDrawingViewController];
+    [self animateButtonFadeIn];
+}
 
-    }];
-
-    [self.drawableViewController removeFromParentViewController];
-    [self.drawableViewController.view removeFromSuperview];
-    
+- (void)updateMapWithLineForRoute:(CCLine *)finishedLine
+{
+    if (finishedLine) {
+        NSLog(@"line recieved: %f and %f", finishedLine.endPoint.x, finishedLine.endPoint.y);
+    }
+    [self hideDrawingViewController];
+    [self animateButtonFadeIn];
 }
 @end

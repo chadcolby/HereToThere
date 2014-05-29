@@ -8,15 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "CCRoundButton.h"
+#import "CCLine.h"
+#import "CCDrawView.h"
 
-@protocol RouteDrawingDelegate <NSObject>
+@protocol DrawingVCDelegate <NSObject>
 
 - (void)endDrawingWithNoLine;
+- (void)updateMapWithLineForRoute:(CCLine *)finishedLine;
 
 @end
 
 @interface CCDrawingViewController : UIViewController
 
-@property (unsafe_unretained) id <RouteDrawingDelegate> delegate;
+@property (unsafe_unretained) id <DrawingVCDelegate> delegate;
+
+@property (strong, nonatomic) CCDrawView *drawView;
 
 @end
