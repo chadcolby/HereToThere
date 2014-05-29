@@ -7,6 +7,7 @@
 //
 
 #import "CCDrawingViewController.h"
+#import "CCDrawView.h"
 
 @interface CCDrawingViewController ()
 
@@ -16,7 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet CCRoundButton *backToMapButton;
 @property (weak, nonatomic) IBOutlet CCRoundButton *routeButton;
-
+@property (strong, nonatomic) CCDrawView *drawView;
 
 @end
 
@@ -25,10 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor clearColor];
-    self.backToMapButton.alpha = 0.0f;
-    self.routeButton.alpha = 0.0f;
-    
+
+    [self initialSetUp];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -50,14 +49,13 @@
 
 }
 
-
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    // Get the new view controller using [segue destinationViewController].
-//    // Pass the selected object to the new view controller.
-//
-//}
-
+- (void)initialSetUp
+{
+    self.drawView = (CCDrawView *)self.view;
+    self.backToMapButton.alpha = 0.0f;
+    self.routeButton.alpha = 0.0f;
+    
+}
 
 #pragma mark - IBActions
 
@@ -68,7 +66,8 @@
 
 - (IBAction)backToMapButtonPressed:(id)sender
 {
-  [self.delegate endDrawingWithNoLine];
+    [self.delegate endDrawingWithNoLine];
+    [self.drawView clearLines];
 }
 
 #pragma mark - Animations

@@ -10,4 +10,7 @@
 
 @interface CCLine : NSObject
 
+@property (nonatomic) CGPoint startPoint;
+@property (nonatomic) CGPoint endPoint;
+
 @end

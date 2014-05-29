@@ -16,14 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sE2-aQ-DzY">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sE2-aQ-DzY">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <gestureRecognizers/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXa-93-vRc" customClass="CCRoundButton">
-                                <rect key="frame" x="90" y="498" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXa-93-vRc" customClass="CCRoundButton">
+                                <rect key="frame" x="90" y="496" width="50" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="ktf-FZ-ptd"/>
+                                </constraints>
                                 <state key="normal" backgroundImage="menu">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -31,8 +34,8 @@
                                     <action selector="moreButtonPressed:" destination="ja3-R1-9Pn" eventType="touchUpInside" id="82s-MO-9re"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ta6-yw-3dH" customClass="CCRoundButton">
-                                <rect key="frame" x="180" y="498" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ta6-yw-3dH" customClass="CCRoundButton">
+                                <rect key="frame" x="180" y="496" width="50" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="currentLocation">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -40,6 +43,18 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="rXa-93-vRc" secondAttribute="bottom" constant="20" symbolic="YES" id="16g-aC-bYe"/>
+                            <constraint firstItem="Ta6-yw-3dH" firstAttribute="leading" secondItem="rXa-93-vRc" secondAttribute="trailing" constant="40" id="5In-pG-B1s"/>
+                            <constraint firstAttribute="trailing" secondItem="Ta6-yw-3dH" secondAttribute="trailing" constant="90" id="G7A-jn-Xt3"/>
+                            <constraint firstAttribute="bottom" secondItem="sE2-aQ-DzY" secondAttribute="bottom" id="Jd1-4c-2ET"/>
+                            <constraint firstItem="sE2-aQ-DzY" firstAttribute="leading" secondItem="7c3-Jm-3B0" secondAttribute="leading" id="M0c-h2-eD1"/>
+                            <constraint firstItem="rXa-93-vRc" firstAttribute="top" secondItem="Ta6-yw-3dH" secondAttribute="top" id="M5R-RN-5A9"/>
+                            <constraint firstAttribute="trailing" secondItem="sE2-aQ-DzY" secondAttribute="trailing" id="P1S-0R-4PI"/>
+                            <constraint firstItem="sE2-aQ-DzY" firstAttribute="top" secondItem="7c3-Jm-3B0" secondAttribute="top" id="eSX-RH-ei5"/>
+                            <constraint firstItem="Ta6-yw-3dH" firstAttribute="baseline" secondItem="rXa-93-vRc" secondAttribute="baseline" id="oy5-ZU-Xg8"/>
+                            <constraint firstItem="rXa-93-vRc" firstAttribute="leading" secondItem="7c3-Jm-3B0" secondAttribute="leading" constant="90" id="xGJ-vt-tgy"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7HR-8W-Ohq"/>
                     <connections>
@@ -59,12 +74,12 @@
                         <viewControllerLayoutGuide type="top" id="JP5-56-GmL"/>
                         <viewControllerLayoutGuide type="bottom" id="s9n-Xn-6Ma"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8gK-nW-x3h">
+                    <view key="view" contentMode="scaleToFill" id="8gK-nW-x3h" customClass="CCDrawView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YH0-Iw-Qd6" customClass="CCRoundButton">
-                                <rect key="frame" x="90" y="498" width="52" height="51"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YH0-Iw-Qd6" customClass="CCRoundButton">
+                                <rect key="frame" x="90" y="485" width="52" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="map">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -73,9 +88,12 @@
                                     <action selector="backToMapButtonPressed:" destination="M7u-De-RBR" eventType="touchUpInside" id="3fy-iF-yAg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JMB-ka-Gnc" customClass="CCRoundButton">
-                                <rect key="frame" x="180" y="498" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JMB-ka-Gnc" customClass="CCRoundButton">
+                                <rect key="frame" x="180" y="485" width="50" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="aoB-Sv-CWC"/>
+                                </constraints>
                                 <state key="normal" image="route">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -85,6 +103,12 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YH0-Iw-Qd6" firstAttribute="leading" secondItem="8gK-nW-x3h" secondAttribute="leading" constant="90" id="6GG-PC-Wn6"/>
+                            <constraint firstItem="JMB-ka-Gnc" firstAttribute="leading" secondItem="YH0-Iw-Qd6" secondAttribute="trailing" constant="38" id="PDI-Tw-zu7"/>
+                            <constraint firstItem="JMB-ka-Gnc" firstAttribute="top" secondItem="YH0-Iw-Qd6" secondAttribute="top" id="bmr-Lf-Lpi"/>
+                            <constraint firstAttribute="bottom" secondItem="JMB-ka-Gnc" secondAttribute="bottom" constant="20" symbolic="YES" id="seb-CZ-UAy"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="backToMapButton" destination="YH0-Iw-Qd6" id="drk-zc-DEu"/>

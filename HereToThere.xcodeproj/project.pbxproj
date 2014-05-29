@@ -36,6 +36,7 @@
 		8DD464BA1937957200609ED9 /* map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DD464B61937957200609ED9 /* map@2x.png */; };
 		8DD464BB1937957200609ED9 /* route.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DD464B71937957200609ED9 /* route.png */; };
 		8DD464BC1937957200609ED9 /* route@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DD464B81937957200609ED9 /* route@2x.png */; };
+		8DD464BF1937B53300609ED9 /* CCDrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD464BE1937B53300609ED9 /* CCDrawView.m */; };
 		8DEFBFF81936A26E00A3F013 /* CCMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFBFF71936A26E00A3F013 /* CCMapViewController.m */; };
 		8DEFBFFB1936A27E00A3F013 /* CCDrawingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFBFFA1936A27E00A3F013 /* CCDrawingViewController.m */; };
 		8DEFBFFE1936A2E200A3F013 /* CCDirectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFBFFD1936A2E200A3F013 /* CCDirectionsViewController.m */; };
@@ -92,6 +93,8 @@
 		8DD464B61937957200609ED9 /* map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map@2x.png"; sourceTree = "<group>"; };
 		8DD464B71937957200609ED9 /* route.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = route.png; sourceTree = "<group>"; };
 		8DD464B81937957200609ED9 /* route@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "route@2x.png"; sourceTree = "<group>"; };
+		8DD464BD1937B53300609ED9 /* CCDrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDrawView.h; sourceTree = "<group>"; };
+		8DD464BE1937B53300609ED9 /* CCDrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDrawView.m; sourceTree = "<group>"; };
 		8DEFBFF61936A26E00A3F013 /* CCMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMapViewController.h; sourceTree = "<group>"; };
 		8DEFBFF71936A26E00A3F013 /* CCMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMapViewController.m; sourceTree = "<group>"; };
 		8DEFBFF91936A27E00A3F013 /* CCDrawingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDrawingViewController.h; sourceTree = "<group>"; };
@@ -176,8 +179,6 @@
 				8D5DD0E6192591CA002A7E68 /* CCAppDelegate.h */,
 				8D5DD0E7192591CA002A7E68 /* CCAppDelegate.m */,
 				8D5DD0E9192591CA002A7E68 /* Main.storyboard */,
-				8DEFBFFF1936A32F00A3F013 /* CCLine.h */,
-				8DEFC0001936A32F00A3F013 /* CCLine.m */,
 				8DEFC0081936A3F200A3F013 /* Models */,
 				8DBD9E9C192E60E60036B30A /* UI */,
 				8DBD9E9B192E60D20036B30A /* Controllers */,
@@ -244,6 +245,8 @@
 		8DBD9E9A192E60C20036B30A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8DD464BD1937B53300609ED9 /* CCDrawView.h */,
+				8DD464BE1937B53300609ED9 /* CCDrawView.m */,
 				8DEFC00F1936A4B100A3F013 /* CCFingerView.h */,
 				8DEFC0101936A4B100A3F013 /* CCFingerView.m */,
 				8DEFC0051936A3D500A3F013 /* CCMenuView.h */,
@@ -279,6 +282,8 @@
 		8DEFC0081936A3F200A3F013 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8DEFBFFF1936A32F00A3F013 /* CCLine.h */,
+				8DEFC0001936A32F00A3F013 /* CCLine.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -397,6 +402,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DD464BF1937B53300609ED9 /* CCDrawView.m in Sources */,
 				8DEFC0041936A3A700A3F013 /* CCRoundButton.m in Sources */,
 				8DEFC0111936A4B100A3F013 /* CCFingerView.m in Sources */,
 				8DEFC00E1936A49E00A3F013 /* CCRouteController.m in Sources */,
