@@ -12,8 +12,11 @@
 
 @interface CCMapViewController ()
 
-- (IBAction)moreButtonPressed:(CCRoundButton *)sender;
+@property (strong, nonatomic) CCMenuView *menuView;
+@property (weak, nonatomic) IBOutlet CCRoundButton *moreButton;
+@property (strong, nonatomic) UITapGestureRecognizer *closeMenuTap;
 
+- (IBAction)moreButtonPressed:(CCRoundButton *)sender;
 
 @end
 
@@ -37,12 +40,42 @@
 - (void)initialMapSetUp
 {
     self.mapView = [[MKMapView alloc] init];
+    
+    self.menuView = [[CCMenuView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, self.view.bounds.size.height, self.view.bounds.size.width, 100)];
+    [self.view addSubview:self.menuView];
+    
+    self.closeMenuTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeMenu:)];
+}
+
+- (void)showMenuViewAnimated:(BOOL)animated
+{
+    if (animated) {
+        [UIView animateWithDuration:0.4f animations:^{
+            self.menuView.frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.size.height - 100, self.view.bounds.size.width,
+                                             self.view.bounds.size.height);
+        } completion:^(BOOL finished) {
+            self.moreButton.hidden = YES;
+            [self.view addGestureRecognizer:self.closeMenuTap];
+        }];
+    }
+}
+
+- (void)closeMenu:(UITapGestureRecognizer *)sender
+{
+    [UIView animateWithDuration:0.4f animations:^{
+        self.menuView.frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.size.height, self.view.bounds.size.width,
+                                         self.view.bounds.size.height);
+    } completion:^(BOOL finished) {
+        self.moreButton.hidden = NO;
+        [self.view removeGestureRecognizer:self.closeMenuTap];
+    }];
+    
 }
 
 #pragma mark - IBActions
 
 - (IBAction)moreButtonPressed:(CCRoundButton *)sender
 {
-    
+    [self showMenuViewAnimated:YES];
 }
 @end

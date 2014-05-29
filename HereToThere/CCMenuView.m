@@ -14,6 +14,9 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor blackColor];
+        self.alpha = 0.8f;
+        
 
     }
     return self;

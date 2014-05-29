@@ -35,6 +35,7 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="sE2-aQ-DzY" id="wfs-Ny-SId"/>
+                        <outlet property="moreButton" destination="rXa-93-vRc" id="xCC-7C-gQb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ijr-AL-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
