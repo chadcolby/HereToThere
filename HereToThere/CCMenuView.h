@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CCRoundButton.h"
 
 @interface CCMenuView : UIView
+
+@property (strong, nonatomic) CCRoundButton *directionsButton;
+@property (strong, nonatomic) CCRoundButton *forwardButton;
+@property (strong, nonatomic) CCRoundButton *clearButton;
+@property (strong, nonatomic) CCRoundButton *settingsButton;
 
 @end

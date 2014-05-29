@@ -21,19 +21,27 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXa-93-vRc" customClass="CCRoundButton">
-                                <rect key="frame" x="135" y="498" width="50" height="50"/>
+                                <rect key="frame" x="90" y="498" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" backgroundImage="Plus">
+                                <state key="normal" backgroundImage="menu">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="moreButtonPressed:" destination="ja3-R1-9Pn" eventType="touchUpInside" id="82s-MO-9re"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ta6-yw-3dH" customClass="CCRoundButton">
+                                <rect key="frame" x="180" y="498" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="currentLocation">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="currentLocationButton" destination="Ta6-yw-3dH" id="nJg-92-7Th"/>
                         <outlet property="mapView" destination="sE2-aQ-DzY" id="wfs-Ny-SId"/>
                         <outlet property="moreButton" destination="rXa-93-vRc" id="xCC-7C-gQb"/>
                     </connections>
@@ -44,7 +52,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Plus" width="25" height="25"/>
+        <image name="currentLocation" width="52" height="52"/>
+        <image name="menu" width="52" height="52"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

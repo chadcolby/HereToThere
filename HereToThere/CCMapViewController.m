@@ -14,11 +14,12 @@
 
 @property (strong, nonatomic) CCMenuView *menuView;
 @property (weak, nonatomic) IBOutlet CCRoundButton *moreButton;
+@property (weak, nonatomic) IBOutlet CCRoundButton *currentLocationButton;
 @property (strong, nonatomic) UITapGestureRecognizer *closeMenuTap;
 
 - (IBAction)moreButtonPressed:(CCRoundButton *)sender;
 
-@end
+@end 
 
 @implementation CCMapViewController
 
@@ -55,6 +56,7 @@
                                              self.view.bounds.size.height);
         } completion:^(BOOL finished) {
             self.moreButton.hidden = YES;
+            self.currentLocationButton.hidden = YES;
             [self.view addGestureRecognizer:self.closeMenuTap];
         }];
     }
@@ -67,6 +69,7 @@
                                          self.view.bounds.size.height);
     } completion:^(BOOL finished) {
         self.moreButton.hidden = NO;
+        self.currentLocationButton.hidden = NO;
         [self.view removeGestureRecognizer:self.closeMenuTap];
     }];
     

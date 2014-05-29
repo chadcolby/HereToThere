@@ -16,10 +16,21 @@
     if (self) {
         self.clipsToBounds = YES;
         self.layer.cornerRadius = 25.0f;
-        self.layer.borderColor = [[UIColor blackColor] CGColor];
-        self.layer.borderWidth = 1.0;
+//        self.layer.borderColor = [[UIColor whiteColor] CGColor];
+//        self.layer.borderWidth = 1.0;
 
     }
+    return self;
+}
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+//        self.clipsToBounds = YES;
+//        self.layer.cornerRadius = 25.0f;
+    }
+    
     return self;
 }
 
