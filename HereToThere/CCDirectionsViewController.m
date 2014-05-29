@@ -10,6 +10,8 @@
 
 @interface CCDirectionsViewController ()
 
+- (IBAction)doneButtonPressed:(id)sender;
+
 @end
 
 @implementation CCDirectionsViewController
@@ -17,7 +19,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self mapViewSetUp];
 }
 
 - (void)didReceiveMemoryWarning
@@ -26,12 +29,18 @@
 
 }
 
-/*
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)mapViewSetUp
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    self.mapViewVC = [self.storyboard instantiateViewControllerWithIdentifier:@"mapViewController"];
+    [self addChildViewController:self.mapViewVC];
+    
+    self.mapViewVC.view.frame = self.view.frame;
+    [self.view addSubview:self.mapViewVC.view];
+    [self.mapViewVC didMoveToParentViewController:self];
 }
-*/
 
+- (IBAction)doneButtonPressed:(id)sender
+{
+    [self.mapViewVC performSelectorOnMainThread:@selector(doThis:) withObject:nil waitUntilDone:NO];
+}
 @end

@@ -67,6 +67,8 @@
     
     self.menuView = [[CCMenuView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, self.view.bounds.size.height, self.view.
                                                                  bounds.size.width, 100)];
+    [self.menuView.directionsButton addTarget:self action:@selector(showDirections:) forControlEvents:UIControlEventTouchUpInside];
+    
     [self.view addSubview:self.menuView];
     self.closeMenuTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeMenu:)];
     self.longPressToDraw = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressForDrawing:)];
@@ -75,7 +77,6 @@
     self.longPressToDraw.allowableMovement = 10.0;
     self.longPressToDraw.numberOfTouchesRequired = 1;
     [self.mapView addGestureRecognizer:self.longPressToDraw];
-    
 }
 
 - (void)mapViewRegion
@@ -89,6 +90,8 @@
         [self.mapView setRegion:mapRegion];
     }
 }
+
+#pragma mark - animations
 
 - (void)showMenuViewAnimated:(BOOL)animated
 {
@@ -128,7 +131,7 @@
 {
     [UIView animateWithDuration:0.4f animations:^{
         self.menuView.frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.size.height, self.view.bounds.size.width,
-                                         self.view.bounds.size.height);
+                                         100);
         self.moreButton.alpha = 1.0f;
         self.currentLocationButton.alpha = 1.0f;
     } completion:^(BOOL finished) {
@@ -161,6 +164,21 @@
     [self showMenuViewAnimated:YES];
 }
 
+#pragma mark - Menu button methods
+
+- (void)showDirections:(CCRoundButton *)sender
+{
+    [UIView animateWithDuration:0.4 animations:^{
+        self.view.frame = CGRectMake(self.view.bounds.size.width - 107, self.view.bounds.origin.y + 100, 107, 368);
+        self.menuView.frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.size.height - 64.7f, self.view.bounds.size.width,
+                                         64.7f);
+        self.menuView.alpha = 0.0f;
+    } completion:^(BOOL finished) {
+        self.closeMenuTap.enabled = NO;
+        [self updateViewConstraints];
+    }];
+}
+
 #pragma mark - drawable view methods
 
 - (CCDrawingViewController *)createDrawableViewFromStoryboard
@@ -183,13 +201,27 @@
     [self animateButtonFadeIn];
 }
 
-- (void)updateMapWithLineForRoute:(CCLine *)finishedLine
+- (void)updateMapWithLineForRoute:(CCLine *)finishedLine    //actual addition of route polyline
 {
     if (finishedLine) {
         NSLog(@"this is where there would be a route");
     }
     [self hideDrawingViewController];
     [self animateButtonFadeIn];
+}
+
+- (void)doThis:(id)sender
+{
+    [UIView animateWithDuration:0.4 animations:^{
+        self.view.frame = [[UIScreen mainScreen] bounds];
+        self.moreButton.alpha = 1.0f;
+        self.currentLocationButton.alpha = 1.0f;
+    } completion:^(BOOL finished) {
+        self.closeMenuTap.enabled = YES;
+        self.menuView.alpha = 1.0;
+        self.menuView.frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.size.height, self.view.bounds.size.width, 100);
+    }];
+    
 }
 
 @end

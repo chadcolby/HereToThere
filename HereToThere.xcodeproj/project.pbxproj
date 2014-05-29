@@ -37,6 +37,8 @@
 		8DD464BB1937957200609ED9 /* route.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DD464B71937957200609ED9 /* route.png */; };
 		8DD464BC1937957200609ED9 /* route@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DD464B81937957200609ED9 /* route@2x.png */; };
 		8DD464BF1937B53300609ED9 /* CCDrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD464BE1937B53300609ED9 /* CCDrawView.m */; };
+		8DD464C21937F6B500609ED9 /* done.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DD464C01937F6B500609ED9 /* done.png */; };
+		8DD464C31937F6B500609ED9 /* done@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DD464C11937F6B500609ED9 /* done@2x.png */; };
 		8DEFBFF81936A26E00A3F013 /* CCMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFBFF71936A26E00A3F013 /* CCMapViewController.m */; };
 		8DEFBFFB1936A27E00A3F013 /* CCDrawingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFBFFA1936A27E00A3F013 /* CCDrawingViewController.m */; };
 		8DEFBFFE1936A2E200A3F013 /* CCDirectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFBFFD1936A2E200A3F013 /* CCDirectionsViewController.m */; };
@@ -95,6 +97,8 @@
 		8DD464B81937957200609ED9 /* route@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "route@2x.png"; sourceTree = "<group>"; };
 		8DD464BD1937B53300609ED9 /* CCDrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDrawView.h; sourceTree = "<group>"; };
 		8DD464BE1937B53300609ED9 /* CCDrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDrawView.m; sourceTree = "<group>"; };
+		8DD464C01937F6B500609ED9 /* done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = done.png; sourceTree = "<group>"; };
+		8DD464C11937F6B500609ED9 /* done@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "done@2x.png"; sourceTree = "<group>"; };
 		8DEFBFF61936A26E00A3F013 /* CCMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMapViewController.h; sourceTree = "<group>"; };
 		8DEFBFF71936A26E00A3F013 /* CCMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMapViewController.m; sourceTree = "<group>"; };
 		8DEFBFF91936A27E00A3F013 /* CCDrawingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDrawingViewController.h; sourceTree = "<group>"; };
@@ -222,6 +226,8 @@
 		8DBD9E99192E5FED0036B30A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8DD464C01937F6B500609ED9 /* done.png */,
+				8DD464C11937F6B500609ED9 /* done@2x.png */,
 				8DD464B51937957200609ED9 /* map.png */,
 				8DD464B61937957200609ED9 /* map@2x.png */,
 				8DD464B71937957200609ED9 /* route.png */,
@@ -366,11 +372,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D76E9201936F020005EF8D3 /* settings.png in Resources */,
+				8DD464C21937F6B500609ED9 /* done.png in Resources */,
 				8D76E9211936F020005EF8D3 /* settings@2x.png in Resources */,
 				8D76E9111936E368005EF8D3 /* menu@2x.png in Resources */,
 				8DD464BB1937957200609ED9 /* route.png in Resources */,
 				8D5DD0F0192591CA002A7E68 /* Images.xcassets in Resources */,
 				8D76E9101936E368005EF8D3 /* menu.png in Resources */,
+				8DD464C31937F6B500609ED9 /* done@2x.png in Resources */,
 				8D76E9151936EA15005EF8D3 /* currentLocation@2x.png in Resources */,
 				8DD464BC1937957200609ED9 /* route@2x.png in Resources */,
 				8D76E9251936F02A005EF8D3 /* clear@2x.png in Resources */,

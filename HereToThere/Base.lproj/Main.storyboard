@@ -1,13 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2wc-4r-5vR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="J87-cQ-qzM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
+        <!--Directions View Controller-->
+        <scene sceneID="zDu-sa-4Ek">
+            <objects>
+                <viewController storyboardIdentifier="directionsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="J87-cQ-qzM" customClass="CCDirectionsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bIr-ph-t5I"/>
+                        <viewControllerLayoutGuide type="bottom" id="f9W-WL-dC8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="558-5G-9F8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GQv-ep-Zsw" customClass="CCRoundButton">
+                                <rect key="frame" x="20" y="25" width="52" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="done">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="J87-cQ-qzM" eventType="touchUpInside" id="ezR-lF-kVn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gld-cT-RX6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1173" y="973"/>
+        </scene>
         <!--Map View Controller-->
         <scene sceneID="PnV-wr-BW1">
             <objects>
-                <viewController id="ja3-R1-9Pn" customClass="CCMapViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ja3-R1-9Pn" customClass="CCMapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Add-ka-ilH"/>
                         <viewControllerLayoutGuide type="bottom" id="jsF-SA-Xzg"/>
@@ -16,11 +46,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sE2-aQ-DzY">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <gestureRecognizers/>
-                            </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXa-93-vRc" customClass="CCRoundButton">
                                 <rect key="frame" x="90" y="496" width="50" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -47,11 +72,7 @@
                             <constraint firstAttribute="bottom" secondItem="rXa-93-vRc" secondAttribute="bottom" constant="20" symbolic="YES" id="16g-aC-bYe"/>
                             <constraint firstItem="Ta6-yw-3dH" firstAttribute="leading" secondItem="rXa-93-vRc" secondAttribute="trailing" constant="40" id="5In-pG-B1s"/>
                             <constraint firstAttribute="trailing" secondItem="Ta6-yw-3dH" secondAttribute="trailing" constant="90" id="G7A-jn-Xt3"/>
-                            <constraint firstAttribute="bottom" secondItem="sE2-aQ-DzY" secondAttribute="bottom" id="Jd1-4c-2ET"/>
-                            <constraint firstItem="sE2-aQ-DzY" firstAttribute="leading" secondItem="7c3-Jm-3B0" secondAttribute="leading" id="M0c-h2-eD1"/>
                             <constraint firstItem="rXa-93-vRc" firstAttribute="top" secondItem="Ta6-yw-3dH" secondAttribute="top" id="M5R-RN-5A9"/>
-                            <constraint firstAttribute="trailing" secondItem="sE2-aQ-DzY" secondAttribute="trailing" id="P1S-0R-4PI"/>
-                            <constraint firstItem="sE2-aQ-DzY" firstAttribute="top" secondItem="7c3-Jm-3B0" secondAttribute="top" id="eSX-RH-ei5"/>
                             <constraint firstItem="Ta6-yw-3dH" firstAttribute="baseline" secondItem="rXa-93-vRc" secondAttribute="baseline" id="oy5-ZU-Xg8"/>
                             <constraint firstItem="rXa-93-vRc" firstAttribute="leading" secondItem="7c3-Jm-3B0" secondAttribute="leading" constant="90" id="xGJ-vt-tgy"/>
                         </constraints>
@@ -119,27 +140,10 @@
             </objects>
             <point key="canvasLocation" x="2223" y="973"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Vd2-ua-TZ4">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="2wc-4r-5vR" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z73-yI-Dhg">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="ja3-R1-9Pn" kind="relationship" relationship="rootViewController" id="Zon-QP-0Ku"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UDa-KM-Pwc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1140" y="973"/>
-        </scene>
     </scenes>
     <resources>
         <image name="currentLocation" width="52" height="52"/>
+        <image name="done" width="52" height="52"/>
         <image name="map" width="52" height="51"/>
         <image name="menu" width="52" height="52"/>
         <image name="route" width="54" height="63"/>

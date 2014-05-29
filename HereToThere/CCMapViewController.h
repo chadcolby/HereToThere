@@ -14,4 +14,6 @@
 
 @property (strong, nonatomic)  MKMapView *mapView;
 
+- (void)doThis:(id)sender;
+
 @end
