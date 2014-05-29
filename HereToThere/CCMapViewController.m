@@ -22,6 +22,11 @@
 
 @property (strong, nonatomic) CCDrawingViewController *drawableViewController;
 
+@property (strong, nonatomic) MKRoute *returnedRoute;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (nonatomic) CLLocationCoordinate2D mainLocation;
+@property (nonatomic) MKCoordinateSpan mapSpan;
+
 - (IBAction)moreButtonPressed:(CCRoundButton *)sender;
 
 @end 
@@ -45,9 +50,16 @@
 
 - (void)initialMapSetUp
 {
+    self.locationManager = [[CLLocationManager alloc] init];
+    [self.locationManager startUpdatingLocation];
+    self.mainLocation = self.locationManager.location.coordinate;
+    [self.locationManager stopUpdatingLocation];
+    
     self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
     self.mapView.delegate = self;
+    self.mapView.showsUserLocation = YES;
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    [self mapViewRegion];
     [self.view addSubview:self.mapView];
     
     [self.view bringSubviewToFront:self.moreButton];
@@ -57,13 +69,25 @@
                                                                  bounds.size.width, 100)];
     [self.view addSubview:self.menuView];
     self.closeMenuTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeMenu:)];
-    
     self.longPressToDraw = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressForDrawing:)];
     self.longPressToDraw.delegate = self;
     self.longPressToDraw.minimumPressDuration = 0.8f;
     self.longPressToDraw.allowableMovement = 10.0;
     self.longPressToDraw.numberOfTouchesRequired = 1;
     [self.mapView addGestureRecognizer:self.longPressToDraw];
+    
+}
+
+- (void)mapViewRegion
+{
+    if (self.mainLocation.latitude) {
+        MKCoordinateRegion mapRegion;
+        mapRegion.center.latitude = self.mainLocation.latitude;
+        mapRegion.center.longitude = self.mainLocation.longitude;
+        self.mapSpan = MKCoordinateSpanMake(0.07, 0.07);
+        mapRegion.span = self.mapSpan;
+        [self.mapView setRegion:mapRegion];
+    }
 }
 
 - (void)showMenuViewAnimated:(BOOL)animated
@@ -162,9 +186,10 @@
 - (void)updateMapWithLineForRoute:(CCLine *)finishedLine
 {
     if (finishedLine) {
-        NSLog(@"line recieved: %f and %f", finishedLine.endPoint.x, finishedLine.endPoint.y);
+        NSLog(@"this is where there would be a route");
     }
     [self hideDrawingViewController];
     [self animateButtonFadeIn];
 }
+
 @end

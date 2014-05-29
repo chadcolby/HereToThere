@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface CCRouteController : NSObject
+
++ (CCRouteController *)sharedController;
 
 @end

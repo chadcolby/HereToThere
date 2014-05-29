@@ -8,6 +8,24 @@
 
 #import "CCRouteController.h"
 
+@interface CCRouteController ()
+
+@property (strong, nonatomic) CLGeocoder *geoCoder;
+@property (strong, nonatomic) MKRoute *requestedRoute;
+
+@end
+
 @implementation CCRouteController
+
++ (CCRouteController *)sharedController
+{
+    static dispatch_once_t pred;
+    static CCRouteController *shared = nil;
+    dispatch_once(&pred, ^{
+        shared = [[CCRouteController alloc] init];
+    });
+    
+    return shared;
+}
 
 @end
