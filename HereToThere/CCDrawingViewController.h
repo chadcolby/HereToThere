@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CCRoundButton.h"
+
+@protocol RouteDrawingDelegate <NSObject>
+
+- (void)endDrawingWithNoLine;
+
+@end
 
 @interface CCDrawingViewController : UIViewController
+
+@property (unsafe_unretained) id <RouteDrawingDelegate> delegate;
 
 @end

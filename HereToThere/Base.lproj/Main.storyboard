@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ja3-R1-9Pn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2wc-4r-5vR">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -41,6 +41,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="7HR-8W-Ohq"/>
                     <connections>
                         <outlet property="currentLocationButton" destination="Ta6-yw-3dH" id="nJg-92-7Th"/>
                         <outlet property="moreButton" destination="rXa-93-vRc" id="xCC-7C-gQb"/>
@@ -48,12 +49,76 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ijr-AL-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1666" y="973"/>
+        </scene>
+        <!--Drawing View Controller-->
+        <scene sceneID="tOr-hm-0Sc">
+            <objects>
+                <viewController storyboardIdentifier="routeDrawingVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="M7u-De-RBR" customClass="CCDrawingViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JP5-56-GmL"/>
+                        <viewControllerLayoutGuide type="bottom" id="s9n-Xn-6Ma"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8gK-nW-x3h">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YH0-Iw-Qd6" customClass="CCRoundButton">
+                                <rect key="frame" x="90" y="498" width="52" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="map">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backToMapButtonPressed:" destination="M7u-De-RBR" eventType="touchUpInside" id="3fy-iF-yAg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JMB-ka-Gnc" customClass="CCRoundButton">
+                                <rect key="frame" x="180" y="498" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="route">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="routeButtonPressed:" destination="M7u-De-RBR" eventType="touchUpInside" id="QfJ-nY-2B6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="backToMapButton" destination="YH0-Iw-Qd6" id="drk-zc-DEu"/>
+                        <outlet property="routeButton" destination="JMB-ka-Gnc" id="g2D-oz-62e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RSj-q0-tVm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2223" y="973"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Vd2-ua-TZ4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="2wc-4r-5vR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z73-yI-Dhg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ja3-R1-9Pn" kind="relationship" relationship="rootViewController" id="Zon-QP-0Ku"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UDa-KM-Pwc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="1140" y="973"/>
         </scene>
     </scenes>
     <resources>
         <image name="currentLocation" width="52" height="52"/>
+        <image name="map" width="52" height="51"/>
         <image name="menu" width="52" height="52"/>
+        <image name="route" width="54" height="63"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
