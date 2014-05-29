@@ -19,6 +19,7 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sE2-aQ-DzY">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <gestureRecognizers/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXa-93-vRc" customClass="CCRoundButton">
                                 <rect key="frame" x="90" y="498" width="50" height="50"/>
@@ -42,7 +43,6 @@
                     </view>
                     <connections>
                         <outlet property="currentLocationButton" destination="Ta6-yw-3dH" id="nJg-92-7Th"/>
-                        <outlet property="mapView" destination="sE2-aQ-DzY" id="wfs-Ny-SId"/>
                         <outlet property="moreButton" destination="rXa-93-vRc" id="xCC-7C-gQb"/>
                     </connections>
                 </viewController>

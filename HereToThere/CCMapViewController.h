@@ -11,6 +11,6 @@
 
 @interface CCMapViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic)  MKMapView *mapView;
 
 @end
