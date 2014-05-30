@@ -28,6 +28,8 @@
 @property (nonatomic) CLLocationCoordinate2D mainLocation;
 @property (nonatomic) MKCoordinateSpan mapSpan;
 
+@property (strong, nonatomic) UIActivityIndicatorView *routingIndicator;
+
 - (IBAction)moreButtonPressed:(CCRoundButton *)sender;
 
 @end 
@@ -70,7 +72,7 @@
     self.menuView = [[CCMenuView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, self.view.bounds.size.height, self.view.
                                                                  bounds.size.width, 100)];
     [self.menuView.directionsButton addTarget:self action:@selector(showDirections:) forControlEvents:UIControlEventTouchUpInside];
-
+    [self.menuView.clearButton addTarget:self action:@selector(routeLineReturned:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.menuView];
     self.closeMenuTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeMenu:)];
     self.longPressToDraw = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressForDrawing:)];
@@ -184,6 +186,15 @@
     }];
 }
 
+- (void)routeLineReturned:(CCRoundButton *)sender
+{
+    if (self.mapView.overlays.count > 0) {
+        [self.mapView removeOverlays:self.mapView.overlays];
+        self.menuView.clearButton.enabled = NO;
+        self.menuView.directionsButton.enabled = NO;
+    }
+}
+
 #pragma mark - drawable view methods
 
 - (CCDrawingViewController *)createDrawableViewFromStoryboard
@@ -215,6 +226,16 @@
         [[CCRouteController sharedController] routeStart:self.locationManager.location.coordinate andEnd:endCoord];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateMapWithPolyline:) name:@"routeLineReturned" object:nil];
     }
+    
+    if (!self.routingIndicator) {
+        self.routingIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        self.routingIndicator.hidesWhenStopped = YES;
+        [self.mapView addSubview:self.routingIndicator];
+    }
+    self.routingIndicator.center = finishedLine.endPoint;
+    
+    [self.routingIndicator startAnimating];
+    
     [self hideDrawingViewController];
     [self animateButtonFadeIn];
 }
@@ -225,6 +246,11 @@
         [[NSNotificationCenter defaultCenter] removeObserver:self name:@"routeLineReturned" object:nil];
         self.routeToAdd = [notification.userInfo objectForKey:@"routeInfo"];
         [self.mapView addOverlay:self.routeToAdd.polyline];
+        if (self.routingIndicator.isAnimating) {
+            [self.routingIndicator stopAnimating];
+        }
+        self.menuView.directionsButton.enabled = YES;
+        self.menuView.clearButton.enabled = YES;
     }
 }
 

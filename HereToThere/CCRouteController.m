@@ -33,7 +33,6 @@
 {
     self.endCoordForRoute = endCoord;
     self.startCoordForRoute = startCoord;
-    NSLog(@"%f with %f", self.endCoordForRoute.latitude, self.endCoordForRoute.longitude);
     CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
     CLLocation *endLocation = [[CLLocation alloc] initWithLatitude:self.endCoordForRoute.latitude
                                                          longitude:self.endCoordForRoute.longitude];
@@ -56,11 +55,23 @@
                     self.requestedRoute = response.routes.lastObject;
                     NSDictionary *userDict = [[NSDictionary alloc] initWithObjectsAndKeys:self.requestedRoute, @"routeInfo", nil];
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"routeLineReturned" object:self userInfo:userDict];
+                    [self listSteps:self.requestedRoute];
                 }
             }];
             
         }
     }];
+}
+
+- (void)listSteps:(MKRoute *)route
+{
+    if (route) {
+        NSDictionary *stepsDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:route.steps, @"routeInfo", nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"routeStepsToDisplay" object:self userInfo:stepsDictionary];
+        for (MKRouteStep *step in route.steps) {
+            NSLog(@"In %f meters %@", step.distance, step.instructions);
+        }
+    }
 }
 
 @end
