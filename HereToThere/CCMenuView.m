@@ -10,8 +10,6 @@
 
 @interface CCMenuView ()
 
-
-
 @end
 
 @implementation CCMenuView

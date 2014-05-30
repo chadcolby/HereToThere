@@ -41,6 +41,6 @@
 
 - (IBAction)doneButtonPressed:(id)sender
 {
-    [self.mapViewVC performSelectorOnMainThread:@selector(doThis:) withObject:nil waitUntilDone:NO];
+    [self.mapViewVC performSelectorOnMainThread:@selector(closeDirectionsView:) withObject:nil waitUntilDone:NO];
 }
 @end

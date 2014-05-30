@@ -10,6 +10,7 @@
 #import "CCRoundButton.h"
 #import "CCMenuView.h"
 #import "CCDrawingViewController.h"
+#import "CCRouteController.h"
 
 @interface CCMapViewController () <UIGestureRecognizerDelegate, MKMapViewDelegate, DrawingVCDelegate>
 
@@ -22,7 +23,7 @@
 
 @property (strong, nonatomic) CCDrawingViewController *drawableViewController;
 
-@property (strong, nonatomic) MKRoute *returnedRoute;
+@property (strong, nonatomic) MKRoute *routeToAdd;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (nonatomic) CLLocationCoordinate2D mainLocation;
 @property (nonatomic) MKCoordinateSpan mapSpan;
@@ -59,6 +60,7 @@
     self.mapView.delegate = self;
     self.mapView.showsUserLocation = YES;
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    [self.mapView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self mapViewRegion];
     [self.view addSubview:self.mapView];
     
@@ -68,7 +70,7 @@
     self.menuView = [[CCMenuView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, self.view.bounds.size.height, self.view.
                                                                  bounds.size.width, 100)];
     [self.menuView.directionsButton addTarget:self action:@selector(showDirections:) forControlEvents:UIControlEventTouchUpInside];
-    
+
     [self.view addSubview:self.menuView];
     self.closeMenuTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeMenu:)];
     self.longPressToDraw = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressForDrawing:)];
@@ -150,6 +152,7 @@
             self.drawableViewController = [self createDrawableViewFromStoryboard];
         } else
         {
+            [self.mapView removeOverlays:self.mapView.overlays];
             [self addChildViewController:self.drawableViewController];
             [self.view addSubview:self.drawableViewController.view];
             [self.drawableViewController didMoveToParentViewController:self];
@@ -173,6 +176,8 @@
         self.menuView.frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.size.height - 64.7f, self.view.bounds.size.width,
                                          64.7f);
         self.menuView.alpha = 0.0f;
+        self.mapView.layer.borderColor = [[UIColor colorWithRed:112.f/255 green:128.f/255 blue:144.f/255 alpha:1.0f] CGColor];
+        self.mapView.layer.borderWidth = 2.0;
     } completion:^(BOOL finished) {
         self.closeMenuTap.enabled = NO;
         [self updateViewConstraints];
@@ -201,21 +206,44 @@
     [self animateButtonFadeIn];
 }
 
-- (void)updateMapWithLineForRoute:(CCLine *)finishedLine    //actual addition of route polyline
+#pragma mark - route controller methods
+
+- (void)updateMapWithLineForRoute:(CCLine *)finishedLine    //get polyline from route controller
 {
     if (finishedLine) {
-        NSLog(@"this is where there would be a route");
+        CLLocationCoordinate2D endCoord = [self.mapView convertPoint:finishedLine.endPoint toCoordinateFromView:self.mapView];
+        [[CCRouteController sharedController] routeStart:self.locationManager.location.coordinate andEnd:endCoord];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateMapWithPolyline:) name:@"routeLineReturned" object:nil];
     }
     [self hideDrawingViewController];
     [self animateButtonFadeIn];
 }
 
-- (void)doThis:(id)sender
+- (void)updateMapWithPolyline:(NSNotification *)notification //called when route controller returns
+{
+    if ([notification.name isEqualToString:@"routeLineReturned"]) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"routeLineReturned" object:nil];
+        self.routeToAdd = [notification.userInfo objectForKey:@"routeInfo"];
+        [self.mapView addOverlay:self.routeToAdd.polyline];
+    }
+}
+
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+{
+    MKPolylineRenderer *routeLineRenderer = [[MKPolylineRenderer alloc] initWithPolyline:self.routeToAdd.polyline];
+    routeLineRenderer.strokeColor = [UIColor colorWithRed:112.f/255 green:128.f/255 blue:144.f/255 alpha:1.f];
+    routeLineRenderer.lineWidth = 3;
+    
+    return routeLineRenderer;
+}
+
+- (void)closeDirectionsView:(id)sender
 {
     [UIView animateWithDuration:0.4 animations:^{
         self.view.frame = [[UIScreen mainScreen] bounds];
         self.moreButton.alpha = 1.0f;
         self.currentLocationButton.alpha = 1.0f;
+        self.mapView.layer.borderWidth = 0.0;
     } completion:^(BOOL finished) {
         self.closeMenuTap.enabled = YES;
         self.menuView.alpha = 1.0;

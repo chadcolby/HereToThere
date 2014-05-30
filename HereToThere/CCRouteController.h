@@ -14,4 +14,6 @@
 
 + (CCRouteController *)sharedController;
 
+- (void)routeStart:(CLLocationCoordinate2D)startCoord andEnd:(CLLocationCoordinate2D)endCoord;
+
 @end

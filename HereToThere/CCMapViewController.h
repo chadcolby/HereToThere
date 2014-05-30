@@ -14,6 +14,6 @@
 
 @property (strong, nonatomic)  MKMapView *mapView;
 
-- (void)doThis:(id)sender;
+- (void)closeDirectionsView:(id)sender;
 
 @end

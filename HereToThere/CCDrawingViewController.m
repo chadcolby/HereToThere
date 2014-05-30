@@ -84,6 +84,7 @@
 {
     if (self.lineForRoute != nil) {
         [self.delegate updateMapWithLineForRoute:self.lineForRoute];  //sends points to delegate for route
+        [self.drawView clearLines];
     }
 }
 
